@@ -1,0 +1,52 @@
+project: post-disaster-recovery-observatory
+principle: "Do not fabricate values. Use documented public APIs/open datasets or mark gaps as manual_required/not_available."
+
+cases:
+  nepal-gorkha-2015:
+    event:
+      provider: USGS Earthquake Hazards Program
+      dataset: FDSN Event Web Service
+      api: "https://earthquake.usgs.gov/fdsnws/event/1/"
+      event_id: us20002926
+      use_for: [event profile, magnitude, epicenter, depth]
+      quality_status: api_verified
+    humanitarian_reports:
+      provider: ReliefWeb
+      dataset: ReliefWeb Reports API
+      api: "https://api.reliefweb.int/v2/reports"
+      query: "Nepal earthquake reconstruction recovery housing"
+      country_iso3: NPL
+      use_for: [humanitarian report frequency, response and reconstruction timeline candidates]
+      quality_status: api_search_results_or_not_available_api_forbidden
+    socioeconomic_context:
+      provider: World Bank
+      dataset: World Development Indicators API
+      api: "https://api.worldbank.org/v2/"
+      country: NPL
+      indicators:
+        NY.GDP.MKTP.CD: "GDP, current US$"
+        NY.GDP.PCAP.CD: "GDP per capita, current US$"
+        SP.POP.TOTL: "Population, total"
+        SP.URB.TOTL.IN.ZS: "Urban population (% of total population)"
+      quality_status: national_context_only
+    remote_sensing_documented_sources:
+      ndvi_evi:
+        provider: NASA LP DAAC
+        dataset: MODIS MOD13Q1 / MYD13Q1 vegetation indices
+        access: "https://lpdaac.usgs.gov/products/mod13q1v061/"
+        processing_status: manual_required
+      land_cover:
+        provider: ESA / Copernicus
+        dataset: ESA WorldCover or ESA CCI Land Cover
+        access: "https://esa-worldcover.org/"
+        processing_status: manual_required
+      night_time_lights:
+        provider: NASA Black Marble / NOAA VIIRS
+        dataset: VIIRS DNB annual or monthly night-time lights
+        access: "https://blackmarble.gsfc.nasa.gov/"
+        processing_status: manual_required
+      settlement:
+        provider: European Commission JRC
+        dataset: Global Human Settlement Layer
+        access: "https://ghsl.jrc.ec.europa.eu/"
+        processing_status: manual_required
