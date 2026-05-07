@@ -1,0 +1,17 @@
+id: wenchuan-2008
+name_en: Wenchuan 5·12 Earthquake
+name_zh: 中国汶川 5·12 地震
+country: China
+event_date: 2008-05-12
+primary_hazards:
+  - earthquake
+  - landslides
+  - mountain settlement disruption
+spatial_focus:
+  - Sichuan Province
+  - Wenchuan County
+  - Longmenshan region
+temporal_scope: 2008-present
+case_role: Mountain-region long-term reconstruction and ecological recovery case.
+data_status: placeholder
+notes: Replace placeholder CSV rows with verified spatial, statistical, textual, and policy datasets.
