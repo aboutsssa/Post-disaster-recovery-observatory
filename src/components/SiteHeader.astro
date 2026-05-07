@@ -1,0 +1,29 @@
+---
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/cases/", label: "Cases" },
+  { href: "/indicators/", label: "Indicators" },
+  { href: "/methods/", label: "Methods" },
+  { href: "/data/", label: "Data" },
+  { href: "/about/", label: "About" }
+];
+---
+
+<header class="site-header">
+  <a class="brand" href={`${import.meta.env.BASE_URL}`}>
+    <span class="brand-mark">R</span>
+    <span>
+      <strong>Recovery Observatory</strong>
+      <small>灾后恢复长期监测台</small>
+    </span>
+  </a>
+  <nav aria-label="Primary navigation">
+    {
+      navItems.map((item) => (
+        <a href={`${import.meta.env.BASE_URL}${item.href.replace(/^\//, "")}`}>
+          {item.label}
+        </a>
+      ))
+    }
+  </nav>
+</header>
