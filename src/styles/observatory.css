@@ -1,1 +1,222 @@
-.metric-card{display:grid;gap:.8rem;border:1px solid var(--line);border-radius:8px;background:var(--surface-strong);box-shadow:var(--shadow);padding:1.25rem}.metric-card p{margin:0;color:var(--muted);font-weight:800}.metric-card strong{font-size:clamp(1.25rem,2.2vw,1.8rem);line-height:1.2}.quality-strip{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:1.25rem}.status-badge{display:inline-flex;align-items:center;width:fit-content;border:1px solid #cbbda9;border-radius:999px;padding:.22rem .58rem;background:#fbf4e8;color:#41514e;font-size:.76rem;font-weight:850;text-transform:uppercase}.status-api_verified,.status-available{border-color:rgba(43,119,112,.45);background:rgba(43,119,112,.12);color:#23615c}.status-national_context_only,.status-available_context_only,.status-api_search_results{border-color:rgba(201,154,60,.52);background:rgba(201,154,60,.15);color:#73551d}.status-manual_required,.status-manual_review_required,.status-api_search_results_manual_review_required,.status-not_available,.status-not_available_api_forbidden{border-color:rgba(184,95,61,.5);background:rgba(184,95,61,.12);color:#8c452e}.chart-card,.timeline-card{display:grid;gap:1rem}.line-chart{width:100%;height:auto;min-height:220px}.line-chart line{stroke:#d7c9b8;stroke-width:1.2}.line-chart polyline{fill:none;stroke:var(--teal);stroke-linecap:round;stroke-linejoin:round;stroke-width:3}.line-chart circle{fill:var(--surface-strong);stroke:var(--teal);stroke-width:2}.line-chart text{fill:var(--muted);font-size:.8rem;font-weight:700}.empty-chart{display:grid;min-height:220px;place-items:center;border:1px dashed #cbbda9;border-radius:8px;background:#fbf4e8;padding:1.25rem;text-align:center}.empty-chart strong{color:var(--terracotta);text-transform:uppercase}.provenance{display:grid;gap:.55rem;margin:0;border-top:1px solid var(--line);padding-top:.85rem}.provenance div{display:grid;gap:.15rem}.provenance dd{color:var(--muted);font-size:.9rem}.timeline-list{display:grid;gap:.8rem;margin:0;padding:0;list-style:none}.timeline-list li{display:grid;gap:.25rem;border-left:4px solid var(--gold);background:#fbf4e8;padding:.75rem .95rem}.timeline-list time{color:var(--terracotta);font-size:.8rem;font-weight:850}.timeline-list a{font-weight:800;text-decoration:none}.timeline-list span{color:var(--muted);font-size:.92rem}
+.metric-card {
+  display: grid;
+  gap: 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+}
+
+.metric-card p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.metric-card strong {
+  font-size: clamp(1.25rem, 2.2vw, 1.8rem);
+  line-height: 1.2;
+}
+
+.quality-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 1.25rem;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border: 1px solid #cbbda9;
+  border-radius: 999px;
+  padding: 0.22rem 0.58rem;
+  background: #fbf4e8;
+  color: #41514e;
+  font-size: 0.76rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.status-api_verified,
+.status-available {
+  border-color: rgba(43, 119, 112, 0.45);
+  background: rgba(43, 119, 112, 0.12);
+  color: #23615c;
+}
+
+.status-national_context_only,
+.status-available_context_only,
+.status-api_search_results {
+  border-color: rgba(201, 154, 60, 0.52);
+  background: rgba(201, 154, 60, 0.15);
+  color: #73551d;
+}
+
+.status-manual_required,
+.status-manual_review_required,
+.status-api_search_results_manual_review_required,
+.status-not_available,
+.status-not_available_missing_secret,
+.status-not_available_api_forbidden,
+.status-not_available_api_error {
+  border-color: rgba(184, 95, 61, 0.5);
+  background: rgba(184, 95, 61, 0.12);
+  color: #8c452e;
+}
+
+.chart-card,
+.timeline-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.line-chart {
+  width: 100%;
+  height: auto;
+  min-height: 220px;
+}
+
+.line-chart line {
+  stroke: #d7c9b8;
+  stroke-width: 1.2;
+}
+
+.line-chart .event-marker {
+  stroke: var(--terracotta);
+  stroke-dasharray: 5 5;
+  stroke-width: 1.5;
+}
+
+.line-chart .event-marker-label {
+  fill: var(--terracotta);
+  font-size: 0.76rem;
+  font-weight: 850;
+}
+
+.line-chart polyline {
+  fill: none;
+  stroke: var(--teal);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+}
+
+.line-chart circle {
+  fill: var(--surface-strong);
+  stroke: var(--teal);
+  stroke-width: 2;
+}
+
+.line-chart text {
+  fill: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.empty-chart {
+  display: grid;
+  min-height: 220px;
+  place-items: center;
+  border: 1px dashed #cbbda9;
+  border-radius: 8px;
+  background: #fbf4e8;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.empty-chart strong {
+  color: var(--terracotta);
+  text-transform: uppercase;
+}
+
+.provenance {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  border-top: 1px solid var(--line);
+  padding-top: 0.85rem;
+}
+
+.provenance div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.provenance dd {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.timeline-list {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline-list li {
+  display: grid;
+  gap: 0.25rem;
+  border-left: 4px solid var(--gold);
+  background: #fbf4e8;
+  padding: 0.75rem 0.95rem;
+}
+
+.timeline-list time {
+  color: var(--terracotta);
+  font-size: 0.8rem;
+  font-weight: 850;
+}
+
+.timeline-list a {
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.timeline-list span {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.source-panel {
+  margin-top: 1rem;
+}
+
+.source-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.source-list section {
+  display: grid;
+  gap: 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbf4e8;
+  padding: 0.95rem;
+}
+
+.source-list section > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.source-list h4,
+.source-list p {
+  margin: 0;
+}
+
+.source-list p {
+  color: var(--muted);
+}
+
+.provenance.compact {
+  border-top: 0;
+  padding-top: 0;
+}
