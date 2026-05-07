@@ -1,0 +1,73 @@
+---
+import ProvenanceBlock from "./ProvenanceBlock.astro";
+
+const {
+  title,
+  points = [],
+  source,
+  unit,
+  method,
+  status,
+  emptyText = "manual_required",
+  note
+} = Astro.props;
+
+const width = 640;
+const height = 260;
+const pad = 38;
+const values = points.map((point) => Number(point.value)).filter((value) => Number.isFinite(value));
+const xs = points.map((point) => Number(point.year ?? point.month_index)).filter((value) => Number.isFinite(value));
+const canDraw = points.length > 1 && values.length > 1 && xs.length > 1;
+const minX = canDraw ? Math.min(...xs) : 0;
+const maxX = canDraw ? Math.max(...xs) : 1;
+const minY = canDraw ? Math.min(...values) : 0;
+const maxY = canDraw ? Math.max(...values) : 1;
+const yRange = maxY - minY || 1;
+const xRange = maxX - minX || 1;
+const line = canDraw
+  ? points
+      .map((point) => {
+        const xValue = Number(point.year ?? point.month_index);
+        const yValue = Number(point.value);
+        const x = pad + ((xValue - minX) / xRange) * (width - pad * 2);
+        const y = height - pad - ((yValue - minY) / yRange) * (height - pad * 2);
+        return `${x.toFixed(1)},${y.toFixed(1)}`;
+      })
+      .join(" ")
+  : "";
+const firstLabel = points[0]?.label ?? points[0]?.year ?? points[0]?.month ?? "";
+const lastPoint = points[points.length - 1] || {};
+const lastLabel = lastPoint.label ?? lastPoint.year ?? lastPoint.month ?? "";
+---
+
+<article class="card chart-card">
+  <div class="chart-heading">
+    <h3>{title}</h3>
+  </div>
+  {
+    canDraw ? (
+      <svg class="line-chart" viewBox={`0 0 ${width} ${height}`} role="img" aria-label={title}>
+        <line x1={pad} y1={height - pad} x2={width - pad} y2={height - pad} />
+        <line x1={pad} y1={pad} x2={pad} y2={height - pad} />
+        <polyline points={line} />
+        {points.map((point) => {
+          const xValue = Number(point.year ?? point.month_index);
+          const yValue = Number(point.value);
+          const x = pad + ((xValue - minX) / xRange) * (width - pad * 2);
+          const y = height - pad - ((yValue - minY) / yRange) * (height - pad * 2);
+          return <circle cx={x} cy={y} r="4" />;
+        })}
+        <text x={pad} y={height - 8}>{firstLabel}</text>
+        <text x={width - pad} y={height - 8} text-anchor="end">{lastLabel}</text>
+        <text x={pad} y={24}>{maxY.toLocaleString()}</text>
+        <text x={pad} y={height - pad - 8}>{minY.toLocaleString()}</text>
+      </svg>
+    ) : (
+      <div class="empty-chart">
+        <strong>{emptyText}</strong>
+        {note && <p>{note}</p>}
+      </div>
+    )
+  }
+  <ProvenanceBlock source={source} unit={unit} method={method} status={status} />
+</article>
