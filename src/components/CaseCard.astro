@@ -1,0 +1,27 @@
+---
+const { caseStudy } = Astro.props;
+---
+
+<article class="card case-card">
+  <div class="case-meta">
+    <span>{caseStudy.year}</span>
+    <span>{caseStudy.country}</span>
+  </div>
+  <h3>{caseStudy.name}</h3>
+  <p class="cn">{caseStudy.nameZh}</p>
+  <p>{caseStudy.summary}</p>
+  <dl class="case-facts">
+    <div>
+      <dt>Event</dt>
+      <dd>{caseStudy.eventDate}</dd>
+    </div>
+    <div>
+      <dt>Primary hazards</dt>
+      <dd>{caseStudy.hazards}</dd>
+    </div>
+    <div>
+      <dt>Data folder</dt>
+      <dd><code>{caseStudy.folder}</code></dd>
+    </div>
+  </dl>
+</article>
