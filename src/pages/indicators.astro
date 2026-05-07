@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const modules = [
+  {
+    name_en: "Disaster Impact",
+    name_zh: "灾害冲击",
+    description: "Measures the initial hazard shock, exposed population and assets, damage patterns, and analytical event boundary.",
+    required_indicators: ["Magnitude", "Affected area", "Building damage", "Population exposure", "Disaster boundary"],
+    optional_indicators: ["Fatalities and injuries", "Lifeline interruption", "Secondary hazards", "Relief accessibility"]
+  },
+  {
+    name_en: "Ecological Recovery",
+    name_zh: "生态恢复",
+    description: "Tracks environmental disturbance and recovery using vegetation, land cover, ecosystem service, and thermal indicators.",
+    required_indicators: ["NDVI", "EVI", "NBR", "LULC", "ESV", "Land surface temperature"],
+    optional_indicators: ["Soil erosion", "Water bodies", "Habitat fragmentation", "Slope vegetation recovery"]
+  },
+  {
+    name_en: "Economic Recovery",
+    name_zh: "经济恢复",
+    description: "Monitors economic activity, public spending, investment, and structural change after disaster disruption.",
+    required_indicators: ["Night-time lights", "GDP", "Industrial structure", "Investment", "Fiscal expenditure"],
+    optional_indicators: ["Employment", "Tourism recovery", "Business registration", "Household income"]
+  },
+  {
+    name_en: "Population & Settlement",
+    name_zh: "人口与居住",
+    description: "Examines population redistribution, settlement reconstruction, urban-rural transition, relocation, and accessibility.",
+    required_indicators: ["Population change", "Urban-rural population", "Built-up area expansion", "Housing reconstruction", "Relocation", "Accessibility"],
+    optional_indicators: ["School and clinic access", "Migration flows", "Temporary shelter", "Road network recovery"]
+  },
+  {
+    name_en: "Social Sensing",
+    name_zh: "社会感知",
+    description: "Uses social media, news, reports, interviews, and other textual traces to understand public attention and lived recovery needs.",
+    required_indicators: ["Public emotions", "Topics", "Needs", "Risk perception", "Public attention", "Social media or textual data"],
+    optional_indicators: ["Misinformation", "Trust", "Community memory", "Volunteer activity"]
+  },
+  {
+    name_en: "Policy & Reconstruction",
+    name_zh: "政策与重建",
+    description: "Documents reconstruction strategies, planning zones, fiscal input, timelines, and governance mechanisms.",
+    required_indicators: ["Reconstruction strategies", "Fiscal input", "Policy timeline", "Planning zones", "Governance mechanisms"],
+    optional_indicators: ["Aid coordination", "Land-use regulation", "Building codes", "Public participation"]
+  }
+];
+---
+
+<BaseLayout title="Indicators · Recovery Observatory">
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Indicator System</p>
+      <h1>Six modules for long-term recovery comparison.</h1>
+      <p class="lead">
+        The shared indicator system is stored in
+        <code>public/data/indicators.json</code>. It gives every disaster case a
+        common analytical language while allowing optional indicators to adapt
+        to local context and data availability.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid two">
+        {
+          modules.map((module, index) => (
+            <article class="card module-card">
+              <span class="module-index">{String(index + 1).padStart(2, "0")}</span>
+              <h3>{module.name_en}</h3>
+              <p class="cn">{module.name_zh}</p>
+              <p>{module.description}</p>
+              <div class="tag-list" aria-label={`${module.name_en} required indicators`}>
+                {module.required_indicators.map((indicator) => <span>{indicator}</span>)}
+              </div>
+              <h3>Optional indicators</h3>
+              <div class="tag-list">
+                {module.optional_indicators.map((indicator) => <span>{indicator}</span>)}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
