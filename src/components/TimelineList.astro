@@ -1,0 +1,27 @@
+---
+import ProvenanceBlock from "./ProvenanceBlock.astro";
+
+const { title, entries = [], source, unit, method, status, emptyText = "manual_required" } = Astro.props;
+---
+
+<article class="card timeline-card">
+  <h3>{title}</h3>
+  {
+    entries.length > 0 ? (
+      <ol class="timeline-list">
+        {entries.map((entry) => (
+          <li>
+            <time>{entry.date || "not_available"}</time>
+            <a href={entry.url}>{entry.title}</a>
+            <span>{entry.source}</span>
+          </li>
+        ))}
+      </ol>
+    ) : (
+      <div class="empty-chart">
+        <strong>{emptyText}</strong>
+      </div>
+    )
+  }
+  <ProvenanceBlock source={source} unit={unit} method={method} status={status} />
+</article>
