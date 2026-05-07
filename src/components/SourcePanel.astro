@@ -1,0 +1,32 @@
+---
+import StatusBadge from "./StatusBadge.astro";
+
+const { title = "Sources & Provenance", sources = [] } = Astro.props;
+---
+
+<article class="card source-panel">
+  <h3>{title}</h3>
+  <div class="source-list">
+    {
+      sources.map((source) => (
+        <section>
+          <div>
+            <h4>{source.name}</h4>
+            <StatusBadge status={source.status} />
+          </div>
+          <p>{source.description}</p>
+          <dl class="provenance compact">
+            <div>
+              <dt>Provenance</dt>
+              <dd><code>{source.provenance}</code></dd>
+            </div>
+            <div>
+              <dt>Method</dt>
+              <dd>{source.method}</dd>
+            </div>
+          </dl>
+        </section>
+      ))
+    }
+  </div>
+</article>
