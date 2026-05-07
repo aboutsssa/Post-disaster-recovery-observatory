@@ -1,7 +1,7 @@
 {
   "case_id": "nepal-gorkha-2015",
   "case_name": "Nepal 2015 Gorkha Earthquake",
-  "generated_at_utc": "2026-05-07T09:11:14.237834+00:00",
+  "generated_at_utc": "2026-05-07T09:39:17.696463+00:00",
   "event_profile": {
     "title": "M 7.8 - 67 km NNE of Bharatpur, Nepal",
     "event_time_utc": "2015-04-25T06:11:25.950000+00:00",
@@ -47,19 +47,13 @@
       "data_quality": "national_context_only",
       "series": [
         { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2010, "value": 16002656434.4746, "unit": "current US$" },
-        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2011, "value": 21573872420.7008, "unit": "current US$" },
-        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2012, "value": 21703100877.1309, "unit": "current US$" },
-        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2013, "value": 22162204924.5726, "unit": "current US$" },
-        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2014, "value": 22731612922.1906, "unit": "current US$" },
         { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2015, "value": 24360801286.7638, "unit": "current US$" },
-        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2016, "value": 24524109483.5293, "unit": "current US$" },
-        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2017, "value": 28971588940.364, "unit": "current US$" },
-        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2018, "value": 33111525237.149, "unit": "current US$" },
-        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2019, "value": 34186180699.0255, "unit": "current US$" },
         { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2020, "value": 33433659301.2466, "unit": "current US$" },
-        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2021, "value": 36924841394.2605, "unit": "current US$" },
-        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2022, "value": 41182939600.6209, "unit": "current US$" },
-        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2023, "value": 41047772331.0994, "unit": "current US$" }
+        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2023, "value": 41047772331.0994, "unit": "current US$" },
+        { "indicator_id": "NY.GDP.PCAP.CD", "indicator": "GDP per capita, current US$", "year": 2010, "value": 585.278491984574, "unit": "current US$ per person" },
+        { "indicator_id": "NY.GDP.PCAP.CD", "indicator": "GDP per capita, current US$", "year": 2015, "value": 875.543635474862, "unit": "current US$ per person" },
+        { "indicator_id": "NY.GDP.PCAP.CD", "indicator": "GDP per capita, current US$", "year": 2020, "value": 1154.21517578318, "unit": "current US$ per person" },
+        { "indicator_id": "NY.GDP.PCAP.CD", "indicator": "GDP per capita, current US$", "year": 2023, "value": 1382.33055769304, "unit": "current US$ per person" }
       ]
     }
   },
@@ -83,19 +77,13 @@
       "data_quality": "national_context_only",
       "series": [
         { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2010, "value": 27341952, "unit": "people" },
-        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2011, "value": 27464494, "unit": "people" },
-        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2012, "value": 27534915, "unit": "people" },
-        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2013, "value": 27589996, "unit": "people" },
-        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2014, "value": 27672370, "unit": "people" },
         { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2015, "value": 27823629, "unit": "people" },
-        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2016, "value": 27955462, "unit": "people" },
-        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2017, "value": 28011258, "unit": "people" },
-        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2018, "value": 28079689, "unit": "people" },
-        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2019, "value": 28414064, "unit": "people" },
         { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2020, "value": 28966574, "unit": "people" },
-        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2021, "value": 29475010, "unit": "people" },
-        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2022, "value": 29715436, "unit": "people" },
-        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2023, "value": 29694614, "unit": "people" }
+        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2023, "value": 29694614, "unit": "people" },
+        { "indicator_id": "SP.URB.TOTL.IN.ZS", "indicator": "Urban population (% of total population)", "year": 2010, "value": 62.0156581578338, "unit": "percent" },
+        { "indicator_id": "SP.URB.TOTL.IN.ZS", "indicator": "Urban population (% of total population)", "year": 2015, "value": 64.9510094249155, "unit": "percent" },
+        { "indicator_id": "SP.URB.TOTL.IN.ZS", "indicator": "Urban population (% of total population)", "year": 2020, "value": 66.1050886088505, "unit": "percent" },
+        { "indicator_id": "SP.URB.TOTL.IN.ZS", "indicator": "Urban population (% of total population)", "year": 2023, "value": 66.5432933453944, "unit": "percent" }
       ]
     }
   },
@@ -105,7 +93,7 @@
     "source": "ReliefWeb Reports API",
     "unit": "monthly report count",
     "processing_method": "Search query filtered to Nepal; counts of returned report creation dates.",
-    "data_quality": "not_available_api_forbidden",
+    "data_quality": "not_available_missing_secret",
     "points": []
   },
   "policy_reconstruction_timeline": {
@@ -114,7 +102,7 @@
     "source": "ReliefWeb Reports API",
     "unit": "report item",
     "processing_method": "Keyword-filtered ReliefWeb titles; human review required for official policy timeline.",
-    "data_quality": "not_available_api_forbidden",
+    "data_quality": "not_available_missing_secret",
     "entries": []
   }
 }
