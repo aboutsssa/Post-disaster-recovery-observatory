@@ -1,0 +1,11 @@
+---
+import ProvenanceBlock from "./ProvenanceBlock.astro";
+
+const { label, value, source, unit, method, status } = Astro.props;
+---
+
+<article class="metric-card">
+  <p>{label}</p>
+  <strong>{value ?? "not_available"}</strong>
+  <ProvenanceBlock source={source} unit={unit} method={method} status={status} />
+</article>
