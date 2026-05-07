@@ -1,39 +1,23 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CaseCard from "../components/CaseCard.astro";
+import MetricCard from "../components/MetricCard.astro";
+import MiniLineChart from "../components/MiniLineChart.astro";
+import TimelineList from "../components/TimelineList.astro";
+import StatusBadge from "../components/StatusBadge.astro";
+import observatory from "../../public/data/processed/nepal-gorkha-2015/observatory.json";
 
 const cases = [
-  {
-    name: "Wenchuan 5·12 Earthquake",
-    nameZh: "中国汶川 5·12 地震",
-    year: "2008",
-    country: "China",
-    eventDate: "May 12, 2008",
-    hazards: "Earthquake, landslides, mountain settlement disruption",
-    folder: "public/data/cases/wenchuan-2008/",
-    summary: "A mountain-region recovery case for tracking ecological disturbance, settlement reconstruction, relocation, and policy-led rebuilding over multiple decades."
-  },
-  {
-    name: "Japan 3·11 Triple Disaster",
-    nameZh: "日本 3·11 复合灾害",
-    year: "2011",
-    country: "Japan",
-    eventDate: "March 11, 2011",
-    hazards: "Earthquake, tsunami, nuclear accident",
-    folder: "public/data/cases/japan-311-2011/",
-    summary: "A compound-disaster case for examining coastal recovery, evacuation zones, demographic change, economic disruption, and governance across interacting hazards."
-  },
-  {
-    name: "Nepal 2015 Gorkha Earthquake",
-    nameZh: "尼泊尔 2015 戈尔卡地震",
-    year: "2015",
-    country: "Nepal",
-    eventDate: "April 25, 2015",
-    hazards: "Earthquake, landslides, heritage and rural housing damage",
-    folder: "public/data/cases/nepal-gorkha-2015/",
-    summary: "A Himalayan recovery case for comparing rural housing reconstruction, accessibility, livelihood recovery, ecological change, and aid governance."
-  }
+  { name: "Wenchuan 5·12 Earthquake", nameZh: "中国汶川 5·12 地震", year: "2008", country: "China", eventDate: "May 12, 2008", hazards: "Earthquake, landslides, mountain settlement disruption", folder: "public/data/cases/wenchuan-2008/", summary: "A mountain-region recovery case for tracking ecological disturbance, settlement reconstruction, relocation, and policy-led rebuilding over multiple decades." },
+  { name: "Japan 3·11 Triple Disaster", nameZh: "日本 3·11 复合灾害", year: "2011", country: "Japan", eventDate: "March 11, 2011", hazards: "Earthquake, tsunami, nuclear accident", folder: "public/data/cases/japan-311-2011/", summary: "A compound-disaster case for examining coastal recovery, evacuation zones, demographic change, economic disruption, and governance across interacting hazards." },
+  { name: "Nepal 2015 Gorkha Earthquake", nameZh: "尼泊尔 2015 戈尔卡地震", year: "2015", country: "Nepal", eventDate: "April 25, 2015", hazards: "Earthquake, landslides, heritage and rural housing damage", folder: "public/data/cases/nepal-gorkha-2015/", summary: "A Himalayan recovery case for comparing rural housing reconstruction, accessibility, livelihood recovery, ecological change, and aid governance." }
 ];
+
+const event = observatory.event_profile;
+const economicRows = observatory.economic_recovery_proxy.worldbank_context.series;
+const gdp = economicRows.filter((row) => row.indicator_id === "NY.GDP.MKTP.CD").map((row) => ({ year: row.year, label: row.year, value: Number((row.value / 1_000_000_000).toFixed(2)) }));
+const populationRows = observatory.population_settlement.worldbank_population_context.series;
+const population = populationRows.filter((row) => row.indicator_id === "SP.POP.TOTL").map((row) => ({ year: row.year, label: row.year, value: Number((row.value / 1_000_000).toFixed(2)) }));
 ---
 
 <BaseLayout title="Cases · Recovery Observatory">
@@ -41,19 +25,50 @@ const cases = [
     <div class="container">
       <p class="eyebrow">Case Studies</p>
       <h1>Three disasters, one comparative research structure.</h1>
-      <p class="lead">
-        Each case follows the same six analytical modules and the same public
-        data folder pattern, making it easier to compare recovery pathways across
-        places, hazard types, and governance systems.
-      </p>
+      <p class="lead">Each case follows the same six analytical modules and data folder pattern.</p>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="container"><div class="grid three">{cases.map((caseStudy) => <CaseCard caseStudy={caseStudy} />)}</div></div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div><p class="eyebrow">Pilot Observatory</p><h2>{observatory.case_name}</h2></div>
+        <p>This pilot is generated from processed data files. Missing local geospatial indicators remain marked as <code>manual_required</code> or <code>not_available</code>.</p>
+      </div>
+      <div class="quality-strip">
+        <StatusBadge status={event.data_quality} />
+        <StatusBadge status={observatory.ecological_recovery.data_quality} />
+        <StatusBadge status={observatory.economic_recovery_proxy.worldbank_context.data_quality} />
+        <StatusBadge status={observatory.social_sensing.data_quality} />
+      </div>
+      <div class="grid three">
+        <MetricCard label="Magnitude" value={`${event.magnitude} ${event.magnitude_type}`} source={event.source} unit="moment magnitude" method={event.processing_method} status={event.data_quality} />
+        <MetricCard label="Event Time" value={event.event_time_utc} source={event.source} unit="UTC timestamp" method={event.processing_method} status={event.data_quality} />
+        <MetricCard label="Epicenter / Depth" value={`${event.latitude}, ${event.longitude}; ${event.depth_km} km`} source={event.source} unit={event.unit} method={event.processing_method} status={event.data_quality} />
+      </div>
     </div>
   </section>
 
   <section class="section band">
     <div class="container">
-      <div class="grid three">
-        {cases.map((caseStudy) => <CaseCard caseStudy={caseStudy} />)}
+      <div class="grid two">
+        <MiniLineChart title={observatory.ecological_recovery.title} points={observatory.ecological_recovery.points} source={observatory.ecological_recovery.source} unit={observatory.ecological_recovery.unit} method={observatory.ecological_recovery.processing_method} status={observatory.ecological_recovery.data_quality} emptyText={observatory.ecological_recovery.status} note={observatory.ecological_recovery.notes} />
+        <MiniLineChart title="National GDP context" points={gdp} source={observatory.economic_recovery_proxy.worldbank_context.source} unit="billion current US$" method="World Bank current US$ values divided by 1 billion for chart readability; national context only." status={observatory.economic_recovery_proxy.worldbank_context.data_quality} />
+        <MiniLineChart title={observatory.economic_recovery_proxy.night_time_lights.title} points={observatory.economic_recovery_proxy.night_time_lights.points} source={observatory.economic_recovery_proxy.night_time_lights.source} unit={observatory.economic_recovery_proxy.night_time_lights.unit} method={observatory.economic_recovery_proxy.night_time_lights.processing_method} status={observatory.economic_recovery_proxy.night_time_lights.data_quality} emptyText={observatory.economic_recovery_proxy.night_time_lights.status} note={observatory.economic_recovery_proxy.night_time_lights.notes} />
+        <MiniLineChart title="National population context" points={population} source={observatory.population_settlement.worldbank_population_context.source} unit="million people" method="World Bank population values divided by 1 million for chart readability; national context only, not affected-area exposure." status={observatory.population_settlement.worldbank_population_context.data_quality} />
+        <MiniLineChart title={observatory.population_settlement.settlement_exposure.title} points={observatory.population_settlement.settlement_exposure.points} source={observatory.population_settlement.settlement_exposure.source} unit={observatory.population_settlement.settlement_exposure.unit} method={observatory.population_settlement.settlement_exposure.processing_method} status={observatory.population_settlement.settlement_exposure.data_quality} emptyText={observatory.population_settlement.settlement_exposure.status} note={observatory.population_settlement.settlement_exposure.notes} />
+        <MiniLineChart title={observatory.social_sensing.title} points={observatory.social_sensing.points} source={observatory.social_sensing.source} unit={observatory.social_sensing.unit} method={observatory.social_sensing.processing_method} status={observatory.social_sensing.data_quality} emptyText={observatory.social_sensing.status} />
       </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <TimelineList title={observatory.policy_reconstruction_timeline.title} entries={observatory.policy_reconstruction_timeline.entries} source={observatory.policy_reconstruction_timeline.source} unit={observatory.policy_reconstruction_timeline.unit} method={observatory.policy_reconstruction_timeline.processing_method} status={observatory.policy_reconstruction_timeline.data_quality} emptyText={observatory.policy_reconstruction_timeline.status} />
     </div>
   </section>
 </BaseLayout>
