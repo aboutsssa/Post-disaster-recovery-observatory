@@ -1,0 +1,40 @@
+name: Update data
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Fetch public API data
+        run: |
+          python scripts/fetch_usgs.py
+          python scripts/fetch_reliefweb.py
+          python scripts/fetch_worldbank.py
+
+      - name: Process chart-ready data
+        run: python scripts/process_all.py
+
+      - name: Commit processed data and provenance
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/processed public/data/provenance
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+          else
+            git commit -m "Update processed observatory data"
+            git push
+          fi
