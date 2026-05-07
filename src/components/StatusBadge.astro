@@ -1,0 +1,6 @@
+---
+const { status = "not_available" } = Astro.props;
+const label = String(status).replaceAll("_", " ");
+---
+
+<span class={`status-badge status-${status}`}>{label}</span>
