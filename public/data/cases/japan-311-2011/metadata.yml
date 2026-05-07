@@ -1,0 +1,18 @@
+id: japan-311-2011
+name_en: Japan 3·11 Triple Disaster
+name_zh: 日本 3·11 复合灾害
+country: Japan
+event_date: 2011-03-11
+primary_hazards:
+  - earthquake
+  - tsunami
+  - nuclear accident
+spatial_focus:
+  - Tohoku coast
+  - Fukushima Prefecture
+  - Miyagi Prefecture
+  - Iwate Prefecture
+temporal_scope: 2011-present
+case_role: Compound-disaster recovery, evacuation, and coastal reconstruction case.
+data_status: placeholder
+notes: Replace placeholder CSV rows with verified spatial, statistical, textual, and policy datasets.
