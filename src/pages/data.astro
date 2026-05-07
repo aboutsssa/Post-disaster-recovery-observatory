@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Data · Recovery Observatory">
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Data Structure</p>
+      <h1>Plain files for transparent, reusable research.</h1>
+      <p class="lead">
+        The MVP uses public static files only. Each case has six placeholder CSV
+        modules and one metadata file, ready to be replaced with real datasets
+        as the observatory grows.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <pre class="data-tree"><code>public/data/
+├── indicators.json
+└── cases/
+    ├── wenchuan-2008/
+    │   ├── metadata.yml
+    │   ├── disaster-impact.csv
+    │   ├── ecological-recovery.csv
+    │   ├── economic-recovery.csv
+    │   ├── population-settlement.csv
+    │   ├── social-sensing.csv
+    │   └── policy-reconstruction.csv
+    ├── japan-311-2011/
+    └── nepal-gorkha-2015/</code></pre>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="narrow">
+      <p class="eyebrow">No Backend</p>
+      <h2>The first version is intentionally static.</h2>
+      <p class="lead">
+        Data files can be downloaded, cited, inspected in Git history, and served
+        directly by GitHub Pages. Later versions can add client-side maps and
+        charts that read from these same files.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
