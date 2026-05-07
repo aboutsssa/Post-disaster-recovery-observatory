@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ModuleCard from "../components/ModuleCard.astro";
+
+const modules = [
+  {
+    name_en: "Disaster Impact",
+    name_zh: "灾害冲击",
+    description: "Event intensity, exposed places and people, damage footprints, and analytical disaster boundaries.",
+    required_indicators: ["Magnitude", "Affected area", "Building damage", "Population exposure", "Disaster boundary"]
+  },
+  {
+    name_en: "Ecological Recovery",
+    name_zh: "生态恢复",
+    description: "Vegetation, burn or disturbance signals, land cover transition, ecosystem service value, and thermal environment.",
+    required_indicators: ["NDVI", "EVI", "NBR", "LULC", "ESV", "Land surface temperature"]
+  },
+  {
+    name_en: "Economic Recovery",
+    name_zh: "经济恢复",
+    description: "Economic activity, fiscal capacity, industrial restructuring, investment, and long-run regional development.",
+    required_indicators: ["Night-time lights", "GDP", "Industrial structure", "Investment", "Fiscal expenditure"]
+  },
+  {
+    name_en: "Population & Settlement",
+    name_zh: "人口与居住",
+    description: "Population redistribution, settlement rebuilding, relocation, built-up expansion, and accessibility change.",
+    required_indicators: ["Population change", "Urban-rural population", "Built-up area", "Housing reconstruction", "Relocation", "Accessibility"]
+  },
+  {
+    name_en: "Social Sensing",
+    name_zh: "社会感知",
+    description: "Public attention, emotions, needs, topics, and risk perception from social media, news, and textual records.",
+    required_indicators: ["Public emotions", "Topics", "Needs", "Risk perception", "Public attention", "Textual data"]
+  },
+  {
+    name_en: "Policy & Reconstruction",
+    name_zh: "政策与重建",
+    description: "Reconstruction strategies, plans, governance arrangements, fiscal input, and policy timelines.",
+    required_indicators: ["Reconstruction strategies", "Fiscal input", "Policy timeline", "Planning zones", "Governance mechanisms"]
+  }
+];
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">ReSpace Lab · Recovery · Space · Resilience</p>
+      <h1>Post-disaster Recovery Observatory</h1>
+      <p class="lead cn">灾后恢复长期监测台</p>
+      <p class="lead">
+        A reusable static geospatial dashboard and research template for comparing
+        long-term recovery after major disaster events across ecological,
+        socioeconomic, demographic, social, and policy dimensions.
+      </p>
+      <div class="hero-actions">
+        <a class="button" href={`${import.meta.env.BASE_URL}cases/`}>Explore Cases</a>
+        <a class="button secondary" href={`${import.meta.env.BASE_URL}indicators/`}>View Indicator System</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Comparative Observatory</p>
+          <h2>Recovery is a long-term spatial process.</h2>
+        </div>
+        <p>
+          The observatory treats recovery as a changing relationship between
+          landscapes, livelihoods, settlement systems, public experience, and
+          reconstruction governance.
+        </p>
+      </div>
+      <div class="grid three">
+        {modules.map((module, index) => <ModuleCard module={module} index={index} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="narrow">
+      <p class="eyebrow">Static MVP</p>
+      <h2>Built for GitHub Pages first, extensible by design.</h2>
+      <p class="lead">
+        Version one has no backend, database, login system, or external API. It
+        provides the repeatable structure needed to add GeoJSON layers,
+        satellite-derived indicators, charts, timelines, and field datasets as
+        the research archive matures.
+      </p>
+      <ul class="feature-list">
+        <li>Three initial cases share the same folder and metadata structure.</li>
+        <li>Six modules organize indicators from hazard impact through governance.</li>
+        <li>Public data files are plain CSV, JSON, and YAML for transparent reuse.</li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
