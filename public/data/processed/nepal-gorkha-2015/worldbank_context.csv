@@ -13,6 +13,20 @@ NY.GDP.MKTP.CD,"GDP, current US$",2020,33433659301.2466,current US$,World Bank W
 NY.GDP.MKTP.CD,"GDP, current US$",2021,36924841394.2605,current US$,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
 NY.GDP.MKTP.CD,"GDP, current US$",2022,41182939600.6209,current US$,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
 NY.GDP.MKTP.CD,"GDP, current US$",2023,41047772331.0994,current US$,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+NY.GDP.PCAP.CD,"GDP per capita, current US$",2010,585.278491984574,current US$ per person,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+NY.GDP.PCAP.CD,"GDP per capita, current US$",2011,785.518656222132,current US$ per person,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+NY.GDP.PCAP.CD,"GDP per capita, current US$",2012,788.202937148377,current US$ per person,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+NY.GDP.PCAP.CD,"GDP per capita, current US$",2013,803.269595420477,current US$ per person,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+NY.GDP.PCAP.CD,"GDP per capita, current US$",2014,821.455224911731,current US$ per person,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+NY.GDP.PCAP.CD,"GDP per capita, current US$",2015,875.543635474862,current US$ per person,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+NY.GDP.PCAP.CD,"GDP per capita, current US$",2016,877.256454696737,current US$ per person,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+NY.GDP.PCAP.CD,"GDP per capita, current US$",2017,1034.28374906846,current US$ per person,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+NY.GDP.PCAP.CD,"GDP per capita, current US$",2018,1179.19843190389,current US$ per person,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+NY.GDP.PCAP.CD,"GDP per capita, current US$",2019,1203.14294706401,current US$ per person,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+NY.GDP.PCAP.CD,"GDP per capita, current US$",2020,1154.21517578318,current US$ per person,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+NY.GDP.PCAP.CD,"GDP per capita, current US$",2021,1252.75076731986,current US$ per person,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+NY.GDP.PCAP.CD,"GDP per capita, current US$",2022,1385.91066274851,current US$ per person,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+NY.GDP.PCAP.CD,"GDP per capita, current US$",2023,1382.33055769304,current US$ per person,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
 SP.POP.TOTL,"Population, total",2010,27341952,people,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
 SP.POP.TOTL,"Population, total",2011,27464494,people,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
 SP.POP.TOTL,"Population, total",2012,27534915,people,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
@@ -27,3 +41,17 @@ SP.POP.TOTL,"Population, total",2020,28966574,people,World Bank WDI API,Fetched 
 SP.POP.TOTL,"Population, total",2021,29475010,people,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
 SP.POP.TOTL,"Population, total",2022,29715436,people,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
 SP.POP.TOTL,"Population, total",2023,29694614,people,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+SP.URB.TOTL.IN.ZS,Urban population (% of total population),2010,62.0156581578338,percent,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+SP.URB.TOTL.IN.ZS,Urban population (% of total population),2011,63.139949798584,percent,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+SP.URB.TOTL.IN.ZS,Urban population (% of total population),2012,63.6558406194333,percent,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+SP.URB.TOTL.IN.ZS,Urban population (% of total population),2013,64.1314570156048,percent,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+SP.URB.TOTL.IN.ZS,Urban population (% of total population),2014,64.5640847098488,percent,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+SP.URB.TOTL.IN.ZS,Urban population (% of total population),2015,64.9510094249155,percent,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+SP.URB.TOTL.IN.ZS,Urban population (% of total population),2016,65.2895168835553,percent,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+SP.URB.TOTL.IN.ZS,Urban population (% of total population),2017,65.5768928085184,percent,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+SP.URB.TOTL.IN.ZS,Urban population (% of total population),2018,65.8104229225551,percent,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+SP.URB.TOTL.IN.ZS,Urban population (% of total population),2019,65.9873929484157,percent,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+SP.URB.TOTL.IN.ZS,Urban population (% of total population),2020,66.1050886088505,percent,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+SP.URB.TOTL.IN.ZS,Urban population (% of total population),2021,66.144235274522,percent,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+SP.URB.TOTL.IN.ZS,Urban population (% of total population),2022,66.2992968721053,percent,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only
+SP.URB.TOTL.IN.ZS,Urban population (% of total population),2023,66.5432933453944,percent,World Bank WDI API,Fetched annual national indicator values for Nepal; sorted ascending by year.,national_context_only

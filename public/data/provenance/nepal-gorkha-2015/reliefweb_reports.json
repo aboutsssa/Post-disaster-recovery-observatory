@@ -1,15 +1,16 @@
 {
   "source": "ReliefWeb Reports API",
-  "url": null,
-  "appname_source": "missing",
+  "url": "https://api.reliefweb.int/v2/reports?appname=qiushan+li&profile=list&limit=100&query%5Bvalue%5D=Nepal+earthquake+reconstruction+recovery+housing&filter%5Bfield%5D=country.iso3&filter%5Bvalue%5D=NPL&sort%5B%5D=date.created%3Aasc&fields%5Binclude%5D%5B%5D=id&fields%5Binclude%5D%5B%5D=title&fields%5Binclude%5D%5B%5D=date.created&fields%5Binclude%5D%5B%5D=source.name&fields%5Binclude%5D%5B%5D=url&fields%5Binclude%5D%5B%5D=primary_country.name",
+  "appname_source": "RELIEFWEB_APPNAME",
   "query": "Nepal earthquake reconstruction recovery housing",
   "country_iso3": "NPL",
-  "fetched_at_utc": "2026-05-07T09:39:12.547074+00:00",
-  "data_quality": "not_available_missing_secret",
+  "fetched_at_utc": "2026-05-07T10:03:56.775588+00:00",
+  "data_quality": "not_available_api_forbidden",
   "error": {
-    "type": "MissingEnvironmentVariable",
-    "name": "RELIEFWEB_APPNAME",
-    "note": "ReliefWeb API v2 requires a pre-approved appname. Add RELIEFWEB_APPNAME as a GitHub Actions secret to fetch reports."
+    "type": "HTTPError",
+    "status_code": 403,
+    "reason": "Forbidden",
+    "note": "ReliefWeb API v2 requires a pre-approved appname; no values were fabricated."
   },
   "payload": {
     "data": []

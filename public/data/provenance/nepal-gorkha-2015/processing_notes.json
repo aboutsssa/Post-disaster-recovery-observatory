@@ -1,6 +1,6 @@
 {
   "case_id": "nepal-gorkha-2015",
-  "generated_at_utc": "2026-05-07T09:39:17.696463+00:00",
+  "generated_at_utc": "2026-05-07T10:03:57.927667+00:00",
   "principle": "No fabricated values. Missing or unprocessed indicators are marked manual_required or not_available.",
   "inputs": {
     "usgs_event": "public/data/provenance/nepal-gorkha-2015/usgs_event.json",

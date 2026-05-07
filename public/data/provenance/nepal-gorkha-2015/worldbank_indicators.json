@@ -1,24 +1,368 @@
 {
   "source": "World Bank World Development Indicators API",
   "country": "NPL",
-  "fetched_at_utc": "2026-05-07T09:10:59.911223+00:00",
+  "fetched_at_utc": "2026-05-07T10:03:57.863850+00:00",
   "data_quality": "national_context_only",
   "indicators": {
     "NY.GDP.MKTP.CD": {
       "label": "GDP, current US$",
-      "url": "https://api.worldbank.org/v2/country/NPL/indicator/NY.GDP.MKTP.CD?format=json&date=2010:2023&per_page=100"
+      "url": "https://api.worldbank.org/v2/country/NPL/indicator/NY.GDP.MKTP.CD?format=json&date=2010:2023&per_page=100",
+      "data": [
+        {
+          "year": "2023",
+          "value": 41047772331.0994,
+          "country": "Nepal",
+          "indicator": "GDP (current US$)"
+        },
+        {
+          "year": "2022",
+          "value": 41182939600.6209,
+          "country": "Nepal",
+          "indicator": "GDP (current US$)"
+        },
+        {
+          "year": "2021",
+          "value": 36924841394.2605,
+          "country": "Nepal",
+          "indicator": "GDP (current US$)"
+        },
+        {
+          "year": "2020",
+          "value": 33433659301.2466,
+          "country": "Nepal",
+          "indicator": "GDP (current US$)"
+        },
+        {
+          "year": "2019",
+          "value": 34186180699.0255,
+          "country": "Nepal",
+          "indicator": "GDP (current US$)"
+        },
+        {
+          "year": "2018",
+          "value": 33111525237.149,
+          "country": "Nepal",
+          "indicator": "GDP (current US$)"
+        },
+        {
+          "year": "2017",
+          "value": 28971588940.364,
+          "country": "Nepal",
+          "indicator": "GDP (current US$)"
+        },
+        {
+          "year": "2016",
+          "value": 24524109483.5293,
+          "country": "Nepal",
+          "indicator": "GDP (current US$)"
+        },
+        {
+          "year": "2015",
+          "value": 24360801286.7638,
+          "country": "Nepal",
+          "indicator": "GDP (current US$)"
+        },
+        {
+          "year": "2014",
+          "value": 22731612922.1906,
+          "country": "Nepal",
+          "indicator": "GDP (current US$)"
+        },
+        {
+          "year": "2013",
+          "value": 22162204924.5726,
+          "country": "Nepal",
+          "indicator": "GDP (current US$)"
+        },
+        {
+          "year": "2012",
+          "value": 21703100877.1309,
+          "country": "Nepal",
+          "indicator": "GDP (current US$)"
+        },
+        {
+          "year": "2011",
+          "value": 21573872420.7008,
+          "country": "Nepal",
+          "indicator": "GDP (current US$)"
+        },
+        {
+          "year": "2010",
+          "value": 16002656434.4746,
+          "country": "Nepal",
+          "indicator": "GDP (current US$)"
+        }
+      ]
     },
     "NY.GDP.PCAP.CD": {
       "label": "GDP per capita, current US$",
-      "url": "https://api.worldbank.org/v2/country/NPL/indicator/NY.GDP.PCAP.CD?format=json&date=2010:2023&per_page=100"
+      "url": "https://api.worldbank.org/v2/country/NPL/indicator/NY.GDP.PCAP.CD?format=json&date=2010:2023&per_page=100",
+      "data": [
+        {
+          "year": "2023",
+          "value": 1382.33055769304,
+          "country": "Nepal",
+          "indicator": "GDP per capita (current US$)"
+        },
+        {
+          "year": "2022",
+          "value": 1385.91066274851,
+          "country": "Nepal",
+          "indicator": "GDP per capita (current US$)"
+        },
+        {
+          "year": "2021",
+          "value": 1252.75076731986,
+          "country": "Nepal",
+          "indicator": "GDP per capita (current US$)"
+        },
+        {
+          "year": "2020",
+          "value": 1154.21517578318,
+          "country": "Nepal",
+          "indicator": "GDP per capita (current US$)"
+        },
+        {
+          "year": "2019",
+          "value": 1203.14294706401,
+          "country": "Nepal",
+          "indicator": "GDP per capita (current US$)"
+        },
+        {
+          "year": "2018",
+          "value": 1179.19843190389,
+          "country": "Nepal",
+          "indicator": "GDP per capita (current US$)"
+        },
+        {
+          "year": "2017",
+          "value": 1034.28374906846,
+          "country": "Nepal",
+          "indicator": "GDP per capita (current US$)"
+        },
+        {
+          "year": "2016",
+          "value": 877.256454696737,
+          "country": "Nepal",
+          "indicator": "GDP per capita (current US$)"
+        },
+        {
+          "year": "2015",
+          "value": 875.543635474862,
+          "country": "Nepal",
+          "indicator": "GDP per capita (current US$)"
+        },
+        {
+          "year": "2014",
+          "value": 821.455224911731,
+          "country": "Nepal",
+          "indicator": "GDP per capita (current US$)"
+        },
+        {
+          "year": "2013",
+          "value": 803.269595420477,
+          "country": "Nepal",
+          "indicator": "GDP per capita (current US$)"
+        },
+        {
+          "year": "2012",
+          "value": 788.202937148377,
+          "country": "Nepal",
+          "indicator": "GDP per capita (current US$)"
+        },
+        {
+          "year": "2011",
+          "value": 785.518656222132,
+          "country": "Nepal",
+          "indicator": "GDP per capita (current US$)"
+        },
+        {
+          "year": "2010",
+          "value": 585.278491984574,
+          "country": "Nepal",
+          "indicator": "GDP per capita (current US$)"
+        }
+      ]
     },
     "SP.POP.TOTL": {
       "label": "Population, total",
-      "url": "https://api.worldbank.org/v2/country/NPL/indicator/SP.POP.TOTL?format=json&date=2010:2023&per_page=100"
+      "url": "https://api.worldbank.org/v2/country/NPL/indicator/SP.POP.TOTL?format=json&date=2010:2023&per_page=100",
+      "data": [
+        {
+          "year": "2023",
+          "value": 29694614,
+          "country": "Nepal",
+          "indicator": "Population, total"
+        },
+        {
+          "year": "2022",
+          "value": 29715436,
+          "country": "Nepal",
+          "indicator": "Population, total"
+        },
+        {
+          "year": "2021",
+          "value": 29475010,
+          "country": "Nepal",
+          "indicator": "Population, total"
+        },
+        {
+          "year": "2020",
+          "value": 28966574,
+          "country": "Nepal",
+          "indicator": "Population, total"
+        },
+        {
+          "year": "2019",
+          "value": 28414064,
+          "country": "Nepal",
+          "indicator": "Population, total"
+        },
+        {
+          "year": "2018",
+          "value": 28079689,
+          "country": "Nepal",
+          "indicator": "Population, total"
+        },
+        {
+          "year": "2017",
+          "value": 28011258,
+          "country": "Nepal",
+          "indicator": "Population, total"
+        },
+        {
+          "year": "2016",
+          "value": 27955462,
+          "country": "Nepal",
+          "indicator": "Population, total"
+        },
+        {
+          "year": "2015",
+          "value": 27823629,
+          "country": "Nepal",
+          "indicator": "Population, total"
+        },
+        {
+          "year": "2014",
+          "value": 27672370,
+          "country": "Nepal",
+          "indicator": "Population, total"
+        },
+        {
+          "year": "2013",
+          "value": 27589996,
+          "country": "Nepal",
+          "indicator": "Population, total"
+        },
+        {
+          "year": "2012",
+          "value": 27534915,
+          "country": "Nepal",
+          "indicator": "Population, total"
+        },
+        {
+          "year": "2011",
+          "value": 27464494,
+          "country": "Nepal",
+          "indicator": "Population, total"
+        },
+        {
+          "year": "2010",
+          "value": 27341952,
+          "country": "Nepal",
+          "indicator": "Population, total"
+        }
+      ]
     },
     "SP.URB.TOTL.IN.ZS": {
       "label": "Urban population (% of total population)",
-      "url": "https://api.worldbank.org/v2/country/NPL/indicator/SP.URB.TOTL.IN.ZS?format=json&date=2010:2023&per_page=100"
+      "url": "https://api.worldbank.org/v2/country/NPL/indicator/SP.URB.TOTL.IN.ZS?format=json&date=2010:2023&per_page=100",
+      "data": [
+        {
+          "year": "2023",
+          "value": 66.5432933453944,
+          "country": "Nepal",
+          "indicator": "Urban population (% of total population)"
+        },
+        {
+          "year": "2022",
+          "value": 66.2992968721053,
+          "country": "Nepal",
+          "indicator": "Urban population (% of total population)"
+        },
+        {
+          "year": "2021",
+          "value": 66.144235274522,
+          "country": "Nepal",
+          "indicator": "Urban population (% of total population)"
+        },
+        {
+          "year": "2020",
+          "value": 66.1050886088505,
+          "country": "Nepal",
+          "indicator": "Urban population (% of total population)"
+        },
+        {
+          "year": "2019",
+          "value": 65.9873929484157,
+          "country": "Nepal",
+          "indicator": "Urban population (% of total population)"
+        },
+        {
+          "year": "2018",
+          "value": 65.8104229225551,
+          "country": "Nepal",
+          "indicator": "Urban population (% of total population)"
+        },
+        {
+          "year": "2017",
+          "value": 65.5768928085184,
+          "country": "Nepal",
+          "indicator": "Urban population (% of total population)"
+        },
+        {
+          "year": "2016",
+          "value": 65.2895168835553,
+          "country": "Nepal",
+          "indicator": "Urban population (% of total population)"
+        },
+        {
+          "year": "2015",
+          "value": 64.9510094249155,
+          "country": "Nepal",
+          "indicator": "Urban population (% of total population)"
+        },
+        {
+          "year": "2014",
+          "value": 64.5640847098488,
+          "country": "Nepal",
+          "indicator": "Urban population (% of total population)"
+        },
+        {
+          "year": "2013",
+          "value": 64.1314570156048,
+          "country": "Nepal",
+          "indicator": "Urban population (% of total population)"
+        },
+        {
+          "year": "2012",
+          "value": 63.6558406194333,
+          "country": "Nepal",
+          "indicator": "Urban population (% of total population)"
+        },
+        {
+          "year": "2011",
+          "value": 63.139949798584,
+          "country": "Nepal",
+          "indicator": "Urban population (% of total population)"
+        },
+        {
+          "year": "2010",
+          "value": 62.0156581578338,
+          "country": "Nepal",
+          "indicator": "Urban population (% of total population)"
+        }
+      ]
     }
   }
 }

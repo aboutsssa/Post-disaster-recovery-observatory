@@ -2,7 +2,7 @@
   "source": "USGS Earthquake Hazards Program FDSN Event Web Service",
   "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventid=us20002926",
   "event_id": "us20002926",
-  "fetched_at_utc": "2026-05-07T09:11:13.390315+00:00",
+  "fetched_at_utc": "2026-05-07T10:03:56.384631+00:00",
   "data_quality": "api_verified",
   "event": {
     "title": "M 7.8 - 67 km NNE of Bharatpur, Nepal",
@@ -11,6 +11,13 @@
     "magnitude_type": "mww",
     "place": "67 km NNE of Bharatpur, Nepal",
     "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us20002926",
-    "geometry": { "type": "Point", "coordinates": [84.7314, 28.2305, 8.22] }
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        84.7314,
+        28.2305,
+        8.22
+      ]
+    }
   }
 }
