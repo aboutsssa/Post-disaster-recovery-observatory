@@ -1,8 +1,8 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://your-github-username.github.io",
-  base: "/recovery-observatory",
+  site: "https://aboutsssa.github.io",
+  base: "/Post-disaster-recovery-observatory",
   output: "static",
   trailingSlash: "always"
 });
