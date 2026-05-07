@@ -9,7 +9,8 @@ const {
   method,
   status,
   emptyText = "manual_required",
-  note
+  note,
+  eventYear
 } = Astro.props;
 
 const width = 640;
@@ -24,6 +25,10 @@ const minY = canDraw ? Math.min(...values) : 0;
 const maxY = canDraw ? Math.max(...values) : 1;
 const yRange = maxY - minY || 1;
 const xRange = maxX - minX || 1;
+const showEventMarker = canDraw && Number.isFinite(Number(eventYear)) && Number(eventYear) >= minX && Number(eventYear) <= maxX;
+const eventX = showEventMarker
+  ? pad + ((Number(eventYear) - minX) / xRange) * (width - pad * 2)
+  : null;
 const line = canDraw
   ? points
       .map((point) => {
@@ -36,8 +41,8 @@ const line = canDraw
       .join(" ")
   : "";
 const firstLabel = points[0]?.label ?? points[0]?.year ?? points[0]?.month ?? "";
-const lastPoint = points[points.length - 1] || {};
-const lastLabel = lastPoint.label ?? lastPoint.year ?? lastPoint.month ?? "";
+const lastPoint = points[points.length - 1];
+const lastLabel = lastPoint?.label ?? lastPoint?.year ?? lastPoint?.month ?? "";
 ---
 
 <article class="card chart-card">
@@ -49,6 +54,12 @@ const lastLabel = lastPoint.label ?? lastPoint.year ?? lastPoint.month ?? "";
       <svg class="line-chart" viewBox={`0 0 ${width} ${height}`} role="img" aria-label={title}>
         <line x1={pad} y1={height - pad} x2={width - pad} y2={height - pad} />
         <line x1={pad} y1={pad} x2={pad} y2={height - pad} />
+        {showEventMarker && (
+          <>
+            <line class="event-marker" x1={eventX} y1={pad} x2={eventX} y2={height - pad} />
+            <text class="event-marker-label" x={eventX + 6} y={pad + 14}>disaster year {eventYear}</text>
+          </>
+        )}
         <polyline points={line} />
         {points.map((point) => {
           const xValue = Number(point.year ?? point.month_index);
