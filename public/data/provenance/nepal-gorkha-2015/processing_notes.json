@@ -1,0 +1,10 @@
+{
+  "case_id": "nepal-gorkha-2015",
+  "generated_at_utc": "2026-05-07T09:11:14.237834+00:00",
+  "principle": "No fabricated values. Missing or unprocessed indicators are marked manual_required or not_available.",
+  "outputs": [
+    "public/data/processed/nepal-gorkha-2015/observatory.json",
+    "public/data/processed/nepal-gorkha-2015/worldbank_context.csv",
+    "public/data/processed/nepal-gorkha-2015/reliefweb_report_frequency.csv"
+  ]
+}
