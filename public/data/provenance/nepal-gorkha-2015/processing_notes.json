@@ -1,10 +1,15 @@
 {
   "case_id": "nepal-gorkha-2015",
-  "generated_at_utc": "2026-05-07T09:11:14.237834+00:00",
+  "generated_at_utc": "2026-05-07T09:39:17.696463+00:00",
   "principle": "No fabricated values. Missing or unprocessed indicators are marked manual_required or not_available.",
-  "outputs": [
-    "public/data/processed/nepal-gorkha-2015/observatory.json",
-    "public/data/processed/nepal-gorkha-2015/worldbank_context.csv",
-    "public/data/processed/nepal-gorkha-2015/reliefweb_report_frequency.csv"
-  ]
+  "inputs": {
+    "usgs_event": "public/data/provenance/nepal-gorkha-2015/usgs_event.json",
+    "reliefweb_reports": "public/data/provenance/nepal-gorkha-2015/reliefweb_reports.json",
+    "worldbank_indicators": "public/data/provenance/nepal-gorkha-2015/worldbank_indicators.json"
+  },
+  "outputs": {
+    "observatory": "public/data/processed/nepal-gorkha-2015/observatory.json",
+    "worldbank_context": "public/data/processed/nepal-gorkha-2015/worldbank_context.csv",
+    "reliefweb_report_frequency": "public/data/processed/nepal-gorkha-2015/reliefweb_report_frequency.csv"
+  }
 }
