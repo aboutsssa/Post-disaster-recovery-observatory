@@ -1,0 +1,120 @@
+{
+  "case_id": "nepal-gorkha-2015",
+  "case_name": "Nepal 2015 Gorkha Earthquake",
+  "generated_at_utc": "2026-05-07T09:11:14.237834+00:00",
+  "event_profile": {
+    "title": "M 7.8 - 67 km NNE of Bharatpur, Nepal",
+    "event_time_utc": "2015-04-25T06:11:25.950000+00:00",
+    "magnitude": 7.8,
+    "magnitude_type": "mww",
+    "depth_km": 8.22,
+    "longitude": 84.7314,
+    "latitude": 28.2305,
+    "place": "67 km NNE of Bharatpur, Nepal",
+    "source": "USGS Earthquake Hazards Program",
+    "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us20002926",
+    "unit": "Mw, km, decimal degrees",
+    "processing_method": "Direct extraction from USGS GeoJSON event properties and geometry.",
+    "data_quality": "api_verified"
+  },
+  "ecological_recovery": {
+    "title": "Ecological recovery trend",
+    "status": "manual_required",
+    "source": "NASA LP DAAC MODIS MOD13Q1/MYD13Q1; ESA WorldCover/CCI",
+    "unit": "NDVI, EVI, NBR, LULC class area, LST",
+    "processing_method": "Documented source exists, but affected-area raster processing has not yet been run.",
+    "data_quality": "manual_required",
+    "points": [],
+    "notes": "Define boundary, download raster products, apply QA masks, compute zonal statistics, then write chart-ready annual series."
+  },
+  "economic_recovery_proxy": {
+    "night_time_lights": {
+      "title": "Economic recovery proxy trend",
+      "status": "manual_required",
+      "source": "NASA Black Marble or NOAA VIIRS DNB",
+      "unit": "radiance",
+      "processing_method": "Documented source exists, but affected-area raster processing has not yet been run.",
+      "data_quality": "manual_required",
+      "points": [],
+      "notes": "Night-time lights require raster processing before local recovery proxy values can be shown."
+    },
+    "worldbank_context": {
+      "title": "National economic context",
+      "status": "available_context_only",
+      "source": "World Bank WDI API",
+      "unit": "current US$, current US$ per person",
+      "processing_method": "Annual national Nepal indicators; not a local recovery proxy.",
+      "data_quality": "national_context_only",
+      "series": [
+        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2010, "value": 16002656434.4746, "unit": "current US$" },
+        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2011, "value": 21573872420.7008, "unit": "current US$" },
+        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2012, "value": 21703100877.1309, "unit": "current US$" },
+        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2013, "value": 22162204924.5726, "unit": "current US$" },
+        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2014, "value": 22731612922.1906, "unit": "current US$" },
+        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2015, "value": 24360801286.7638, "unit": "current US$" },
+        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2016, "value": 24524109483.5293, "unit": "current US$" },
+        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2017, "value": 28971588940.364, "unit": "current US$" },
+        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2018, "value": 33111525237.149, "unit": "current US$" },
+        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2019, "value": 34186180699.0255, "unit": "current US$" },
+        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2020, "value": 33433659301.2466, "unit": "current US$" },
+        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2021, "value": 36924841394.2605, "unit": "current US$" },
+        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2022, "value": 41182939600.6209, "unit": "current US$" },
+        { "indicator_id": "NY.GDP.MKTP.CD", "indicator": "GDP, current US$", "year": 2023, "value": 41047772331.0994, "unit": "current US$" }
+      ]
+    }
+  },
+  "population_settlement": {
+    "settlement_exposure": {
+      "title": "Population and settlement exposure",
+      "status": "manual_required",
+      "source": "JRC GHSL, WorldPop, affected-area boundary",
+      "unit": "people, built-up area",
+      "processing_method": "Documented source exists, but affected-area raster processing has not yet been run.",
+      "data_quality": "manual_required",
+      "points": [],
+      "notes": "Exposure metrics require boundary-based gridded population and settlement aggregation."
+    },
+    "worldbank_population_context": {
+      "title": "National population context",
+      "status": "available_context_only",
+      "source": "World Bank WDI API",
+      "unit": "people, percent urban",
+      "processing_method": "Annual national Nepal indicators; not affected-area exposure.",
+      "data_quality": "national_context_only",
+      "series": [
+        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2010, "value": 27341952, "unit": "people" },
+        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2011, "value": 27464494, "unit": "people" },
+        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2012, "value": 27534915, "unit": "people" },
+        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2013, "value": 27589996, "unit": "people" },
+        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2014, "value": 27672370, "unit": "people" },
+        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2015, "value": 27823629, "unit": "people" },
+        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2016, "value": 27955462, "unit": "people" },
+        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2017, "value": 28011258, "unit": "people" },
+        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2018, "value": 28079689, "unit": "people" },
+        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2019, "value": 28414064, "unit": "people" },
+        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2020, "value": 28966574, "unit": "people" },
+        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2021, "value": 29475010, "unit": "people" },
+        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2022, "value": 29715436, "unit": "people" },
+        { "indicator_id": "SP.POP.TOTL", "indicator": "Population, total", "year": 2023, "value": 29694614, "unit": "people" }
+      ]
+    }
+  },
+  "social_sensing": {
+    "title": "ReliefWeb report frequency",
+    "status": "not_available",
+    "source": "ReliefWeb Reports API",
+    "unit": "monthly report count",
+    "processing_method": "Search query filtered to Nepal; counts of returned report creation dates.",
+    "data_quality": "not_available_api_forbidden",
+    "points": []
+  },
+  "policy_reconstruction_timeline": {
+    "title": "Response and reconstruction timeline candidates",
+    "status": "not_available",
+    "source": "ReliefWeb Reports API",
+    "unit": "report item",
+    "processing_method": "Keyword-filtered ReliefWeb titles; human review required for official policy timeline.",
+    "data_quality": "not_available_api_forbidden",
+    "entries": []
+  }
+}
