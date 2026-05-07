@@ -1,0 +1,17 @@
+id: nepal-gorkha-2015
+name_en: Nepal 2015 Gorkha Earthquake
+name_zh: 尼泊尔 2015 戈尔卡地震
+country: Nepal
+event_date: 2015-04-25
+primary_hazards:
+  - earthquake
+  - landslides
+  - rural housing damage
+spatial_focus:
+  - Gorkha District
+  - Kathmandu Valley
+  - affected Himalayan districts
+temporal_scope: 2015-present
+case_role: Himalayan settlement reconstruction, accessibility, and livelihood recovery case.
+data_status: placeholder
+notes: Replace placeholder CSV rows with verified spatial, statistical, textual, and policy datasets.
