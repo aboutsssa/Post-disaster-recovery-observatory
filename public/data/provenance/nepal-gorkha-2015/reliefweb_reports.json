@@ -1,15 +1,17 @@
 {
   "source": "ReliefWeb Reports API",
-  "url": "https://api.reliefweb.int/v2/reports?appname=aboutsssa.github.io%2FPost-disaster-recovery-observatory",
+  "url": null,
+  "appname_source": "missing",
   "query": "Nepal earthquake reconstruction recovery housing",
   "country_iso3": "NPL",
-  "fetched_at_utc": "2026-05-07T09:05:30.010966+00:00",
-  "data_quality": "not_available_api_forbidden",
+  "fetched_at_utc": "2026-05-07T09:39:12.547074+00:00",
+  "data_quality": "not_available_missing_secret",
   "error": {
-    "type": "HTTPError",
-    "status_code": 403,
-    "reason": "Forbidden",
-    "note": "ReliefWeb API v2 currently requires a pre-approved appname; no values were fabricated."
+    "type": "MissingEnvironmentVariable",
+    "name": "RELIEFWEB_APPNAME",
+    "note": "ReliefWeb API v2 requires a pre-approved appname. Add RELIEFWEB_APPNAME as a GitHub Actions secret to fetch reports."
   },
-  "payload": { "data": [] }
+  "payload": {
+    "data": []
+  }
 }
