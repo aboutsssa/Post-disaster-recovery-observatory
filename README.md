@@ -2,7 +2,7 @@
 
 **ReSpace Lab: Recovery · Space · Resilience**
 
-Post-disaster Recovery Observatory is a reusable geospatial dashboard and research template for comparative long-term recovery analysis after major disaster events. It is designed as a static Astro website for GitHub Pages under the repository name `recovery-observatory`.
+Post-disaster Recovery Observatory is a reusable geospatial dashboard and research template for comparative long-term recovery analysis after major disaster events. It is designed as a static Astro website for GitHub Pages under the repository name `Post-disaster-recovery-observatory`.
 
 The project starts from a simple premise: recovery is not only the repair of damaged buildings. It is a long-term spatial, ecological, socioeconomic, demographic, social, and policy process that unfolds unevenly across regions and communities.
 
@@ -122,17 +122,17 @@ npm run preview
 This project is configured for a GitHub Pages project site at:
 
 ```text
-https://your-github-username.github.io/recovery-observatory/
+https://aboutsssa.github.io/Post-disaster-recovery-observatory/
 ```
 
-Before publishing, update `site` in `astro.config.mjs`:
+The GitHub Pages settings in `astro.config.mjs` are:
 
 ```js
-site: "https://your-github-username.github.io",
-base: "/recovery-observatory"
+site: "https://aboutsssa.github.io",
+base: "/Post-disaster-recovery-observatory"
 ```
 
-Then push the repository to GitHub and enable Pages with **GitHub Actions** as the source. The workflow in `.github/workflows/deploy.yml` will build Astro and publish the static output.
+Enable Pages with **GitHub Actions** as the source. The workflow in `.github/workflows/deploy.yml` will build Astro and publish the static output.
 
 ## Future Extensions
 
