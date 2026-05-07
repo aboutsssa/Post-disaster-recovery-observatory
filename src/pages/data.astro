@@ -8,9 +8,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <p class="eyebrow">Data Structure</p>
       <h1>Plain files for transparent, reusable research.</h1>
       <p class="lead">
-        The MVP uses public static files only. Each case has six placeholder CSV
-        modules and one metadata file, ready to be replaced with real datasets
-        as the observatory grows.
+        Each case keeps source-facing module files, processed chart-ready outputs,
+        and provenance logs so values can be traced back to public APIs or
+        documented datasets.
       </p>
     </div>
   </section>
@@ -19,6 +19,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <div class="container">
       <pre class="data-tree"><code>public/data/
 ├── indicators.json
+├── processed/
+│   └── nepal-gorkha-2015/
+│       ├── observatory.json
+│       ├── reliefweb_report_frequency.csv
+│       └── worldbank_context.csv
+├── provenance/
+│   └── nepal-gorkha-2015/
+│       ├── processing_notes.json
+│       ├── reliefweb_reports.json
+│       ├── usgs_event.json
+│       └── worldbank_indicators.json
 └── cases/
     ├── wenchuan-2008/
     │   ├── metadata.yml
