@@ -1,0 +1,24 @@
+{
+  "source": "World Bank World Development Indicators API",
+  "country": "NPL",
+  "fetched_at_utc": "2026-05-07T09:10:59.911223+00:00",
+  "data_quality": "national_context_only",
+  "indicators": {
+    "NY.GDP.MKTP.CD": {
+      "label": "GDP, current US$",
+      "url": "https://api.worldbank.org/v2/country/NPL/indicator/NY.GDP.MKTP.CD?format=json&date=2010:2023&per_page=100"
+    },
+    "NY.GDP.PCAP.CD": {
+      "label": "GDP per capita, current US$",
+      "url": "https://api.worldbank.org/v2/country/NPL/indicator/NY.GDP.PCAP.CD?format=json&date=2010:2023&per_page=100"
+    },
+    "SP.POP.TOTL": {
+      "label": "Population, total",
+      "url": "https://api.worldbank.org/v2/country/NPL/indicator/SP.POP.TOTL?format=json&date=2010:2023&per_page=100"
+    },
+    "SP.URB.TOTL.IN.ZS": {
+      "label": "Urban population (% of total population)",
+      "url": "https://api.worldbank.org/v2/country/NPL/indicator/SP.URB.TOTL.IN.ZS?format=json&date=2010:2023&per_page=100"
+    }
+  }
+}
