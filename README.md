@@ -18,9 +18,9 @@ The project starts from a simple premise: recovery is not only the repair of dam
 
 | Case | Country | Event date | Research role |
 | --- | --- | --- | --- |
-| Wenchuan 5·12 Earthquake / 中国汶川 5·12 地震 | China | 2008-05-12 | Mountain-region reconstruction, ecological disturbance, relocation, and policy-led rebuilding |
-| Japan 3·11 Triple Disaster / 日本 3·11 复合灾害 | Japan | 2011-03-11 | Compound earthquake-tsunami-nuclear recovery, evacuation, coastal rebuilding, and governance |
-| Nepal 2015 Gorkha Earthquake / 尼泊尔 2015 戈尔卡地震 | Nepal | 2015-04-25 | Himalayan settlement reconstruction, accessibility, livelihoods, and aid governance |
+| Wenchuan 5·12 Earthquake | China | 2008-05-12 | Mountain-region reconstruction, ecological disturbance, relocation, and policy-led rebuilding |
+| Japan 3·11 Triple Disaster | Japan | 2011-03-11 | Compound earthquake-tsunami-nuclear recovery, evacuation, coastal rebuilding, and governance |
+| Nepal 2015 Gorkha Earthquake | Nepal | 2015-04-25 | Himalayan settlement reconstruction, accessibility, livelihoods, and aid governance |
 
 ## Indicator System
 
