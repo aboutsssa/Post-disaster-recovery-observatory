@@ -1,6 +1,6 @@
 # Post-disaster Recovery Observatory / 灾后恢复长期监测台
 
-**ReSpace Lab: Recovery · Space · Resilience**
+**ReSpace Lab: Recovery · Resilience · Reimagine**
 
 Post-disaster Recovery Observatory is a reusable geospatial dashboard and research template for comparative long-term recovery analysis after major disaster events.
 
