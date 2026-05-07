@@ -1,0 +1,24 @@
+---
+import StatusBadge from "./StatusBadge.astro";
+
+const { source, unit, method, status } = Astro.props;
+---
+
+<dl class="provenance">
+  <div>
+    <dt>Source</dt>
+    <dd>{source || "not_available"}</dd>
+  </div>
+  <div>
+    <dt>Unit</dt>
+    <dd>{unit || "not_available"}</dd>
+  </div>
+  <div>
+    <dt>Processing</dt>
+    <dd>{method || "not_available"}</dd>
+  </div>
+  <div>
+    <dt>Quality</dt>
+    <dd><StatusBadge status={status} /></dd>
+  </div>
+</dl>
