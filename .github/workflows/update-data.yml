@@ -19,6 +19,8 @@ jobs:
           python-version: "3.11"
 
       - name: Fetch public API data
+        env:
+          RELIEFWEB_APPNAME: ${{ secrets.RELIEFWEB_APPNAME }}
         run: |
           python scripts/fetch_usgs.py
           python scripts/fetch_reliefweb.py
@@ -26,6 +28,9 @@ jobs:
 
       - name: Process chart-ready data
         run: python scripts/process_all.py
+
+      - name: Validate processed data
+        run: python scripts/validate_data.py
 
       - name: Commit processed data and provenance
         run: |
