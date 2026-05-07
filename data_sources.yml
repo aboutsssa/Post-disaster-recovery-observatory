@@ -8,16 +8,27 @@ cases:
       dataset: FDSN Event Web Service
       api: "https://earthquake.usgs.gov/fdsnws/event/1/"
       event_id: us20002926
-      use_for: [event profile, magnitude, epicenter, depth]
+      license: "Public domain / USGS open data"
+      use_for:
+        - event profile
+        - magnitude
+        - epicenter
+        - depth
       quality_status: api_verified
+
     humanitarian_reports:
       provider: ReliefWeb
       dataset: ReliefWeb Reports API
       api: "https://api.reliefweb.int/v2/reports"
+      appname_env: RELIEFWEB_APPNAME
       query: "Nepal earthquake reconstruction recovery housing"
       country_iso3: NPL
-      use_for: [humanitarian report frequency, response and reconstruction timeline candidates]
-      quality_status: api_search_results_or_not_available_api_forbidden
+      license: "ReliefWeb API Terms of Service; individual reports retain source rights"
+      use_for:
+        - humanitarian report frequency
+        - response and reconstruction timeline candidate events
+      quality_status: api_search_results_or_not_available_missing_secret
+
     socioeconomic_context:
       provider: World Bank
       dataset: World Development Indicators API
@@ -28,25 +39,33 @@ cases:
         NY.GDP.PCAP.CD: "GDP per capita, current US$"
         SP.POP.TOTL: "Population, total"
         SP.URB.TOTL.IN.ZS: "Urban population (% of total population)"
+      use_for:
+        - national socioeconomic context
+        - population and settlement context
       quality_status: national_context_only
+
     remote_sensing_documented_sources:
       ndvi_evi:
         provider: NASA LP DAAC
         dataset: MODIS MOD13Q1 / MYD13Q1 vegetation indices
         access: "https://lpdaac.usgs.gov/products/mod13q1v061/"
         processing_status: manual_required
+        notes: "Requires defining disaster boundary, downloading tiled raster products, masking clouds, and aggregating by boundary/year."
       land_cover:
         provider: ESA / Copernicus
-        dataset: ESA WorldCover or ESA CCI Land Cover
+        dataset: "ESA WorldCover or ESA CCI Land Cover"
         access: "https://esa-worldcover.org/"
         processing_status: manual_required
+        notes: "Requires boundary harmonization and class crosswalk before chart-ready LULC transition metrics."
       night_time_lights:
         provider: NASA Black Marble / NOAA VIIRS
-        dataset: VIIRS DNB annual or monthly night-time lights
+        dataset: "VIIRS DNB annual or monthly night-time lights"
         access: "https://blackmarble.gsfc.nasa.gov/"
         processing_status: manual_required
+        notes: "Requires raster download, radiance correction, masking, and zonal statistics."
       settlement:
         provider: European Commission JRC
         dataset: Global Human Settlement Layer
         access: "https://ghsl.jrc.ec.europa.eu/"
         processing_status: manual_required
+        notes: "Requires selecting GHSL epochs, affected-area boundary, and settlement exposure aggregation."
