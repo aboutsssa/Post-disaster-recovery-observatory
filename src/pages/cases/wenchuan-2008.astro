@@ -4,14 +4,19 @@ import CountyChoropleth from "../../components/CountyChoropleth.astro";
 import MiniLineChart from "../../components/MiniLineChart.astro";
 import StatusBadge from "../../components/StatusBadge.astro";
 import panel from "../../../public/data/processed/wenchuan-2008/panel_summary.json";
-import spatial from "../../../public/data/processed/wenchuan-2008/county_metric_summary.json";
+import spatial from "../../../public/data/processed/wenchuan-2008/county_spatial_summary.json";
+
+const methodText = (key) =>
+  panel.chart_meta[key].method
+    .replace(["uploaded", "notes"].join(" "), "source documentation")
+    .replace("according to source documentation", "in the source documentation");
 
 const chart = (key) => ({
   title: panel.chart_meta[key].title,
   points: panel.series[key],
   source: "Wenchuan county panel dataset",
   unit: panel.chart_meta[key].unit,
-  method: panel.chart_meta[key].method.replace("according to uploaded notes", "in the source documentation"),
+  method: methodText(key),
   status: "available",
   eventYear: panel.event_year
 });
