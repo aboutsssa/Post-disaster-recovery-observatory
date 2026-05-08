@@ -9,7 +9,7 @@ import spatial from "../../../public/data/processed/wenchuan-2008/county_metric_
 const chart = (key) => ({
   title: panel.chart_meta[key].title,
   points: panel.series[key],
-  source: panel.chart_meta[key].source,
+  source: "Wenchuan county panel dataset",
   unit: panel.chart_meta[key].unit,
   method: panel.chart_meta[key].method,
   status: "available",
@@ -61,7 +61,10 @@ const moduleChartKeys = Object.fromEntries(panel.modules.map((module) => [module
           <h2>County panel and spatial unit alignment.</h2>
         </div>
         <p>
-          {panel.panel.cleaning_note} {panel.panel.inflation_note}
+          Administrative units affected by boundary splits are excluded,
+          leaving 177 county-level units. Real GDP, sector outputs, and real
+          GDP per capita use growth-index adjustments; fiscal expenditure and
+          fixed-asset investment are kept as source-reported input measures.
         </p>
       </div>
       <div class="grid three">
