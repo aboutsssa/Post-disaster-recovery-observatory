@@ -11,7 +11,7 @@ const chart = (key) => ({
   points: panel.series[key],
   source: "Wenchuan county panel dataset",
   unit: panel.chart_meta[key].unit,
-  method: panel.chart_meta[key].method,
+  method: panel.chart_meta[key].method.replace("according to uploaded notes", "in the source documentation"),
   status: "available",
   eventYear: panel.event_year
 });
