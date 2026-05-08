@@ -1,5 +1,6 @@
 ---
 const { caseStudy } = Astro.props;
+const hazards = Array.isArray(caseStudy.hazards) ? caseStudy.hazards.join(", ") : caseStudy.hazards;
 ---
 
 <article class="card case-card">
@@ -17,7 +18,7 @@ const { caseStudy } = Astro.props;
     </div>
     <div>
       <dt>Primary hazards</dt>
-      <dd>{caseStudy.hazards}</dd>
+      <dd>{hazards}</dd>
     </div>
     <div>
       <dt>Data folder</dt>

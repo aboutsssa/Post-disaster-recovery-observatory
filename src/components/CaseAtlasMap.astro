@@ -1,0 +1,60 @@
+---
+const { cases } = Astro.props;
+const mapId = "case-atlas-map";
+---
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQXGYGnZrA2lCw7SkXcc5iRvZEG4GFA=" crossorigin="" />
+
+<div class="map-shell">
+  <div id={mapId} class="atlas-map" aria-label="Case atlas map"></div>
+  <div class="map-legend" aria-label="Map legend">
+    <span><i class="legend-affected"></i>Affected-area boundary</span>
+    <span><i class="legend-admin"></i>Administrative unit</span>
+    <span><i class="legend-event"></i>Earthquake epicenter</span>
+  </div>
+</div>
+
+<style>
+  .map-shell { overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: var(--surface-strong); box-shadow: var(--shadow); }
+  .atlas-map { width: 100%; height: min(68vh, 640px); min-height: 420px; }
+  .map-legend { display: flex; flex-wrap: wrap; gap: 0.8rem 1.2rem; border-top: 1px solid var(--line); padding: 0.8rem 1rem; color: var(--muted); font-size: 0.9rem; font-weight: 750; }
+  .map-legend span { display: inline-flex; align-items: center; gap: 0.45rem; }
+  .map-legend i { display: inline-block; width: 1rem; height: 1rem; }
+  .legend-affected { border: 2px solid var(--terracotta); background: rgba(195, 91, 56, 0.16); }
+  .legend-admin { border: 2px dashed var(--teal); background: rgba(17, 109, 114, 0.1); }
+  .legend-event { border: 2px solid var(--ink); border-radius: 999px; background: #f1b84b; }
+</style>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script type="application/json" id={`${mapId}-data`} set:html={JSON.stringify(cases)}></script>
+<script define:vars={{ mapId }}>
+  const bootCaseAtlas = () => {
+    const container = document.getElementById(mapId);
+    const payload = document.getElementById(`${mapId}-data`);
+    const L = window.L;
+    if (!container || !payload || !L || container.dataset.ready === "true") return;
+    container.dataset.ready = "true";
+    const escapeHtml = (value) => String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    const cases = JSON.parse(payload.textContent || "[]");
+    const map = L.map(container, { scrollWheelZoom: false, worldCopyJump: true });
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 18, attribution: "&copy; OpenStreetMap contributors" }).addTo(map);
+    const allLayers = [];
+    const affectedLayer = L.layerGroup().addTo(map);
+    const adminLayer = L.layerGroup().addTo(map);
+    const epicenterLayer = L.layerGroup().addTo(map);
+    cases.forEach((caseStudy) => {
+      const affected = L.polygon(caseStudy.affectedBoundary, { color: "#c35b38", fillColor: "#c35b38", fillOpacity: 0.14, weight: 2 }).bindPopup(`<strong>${escapeHtml(caseStudy.name)}</strong><br/>${escapeHtml(caseStudy.boundaryStatus)}`);
+      affected.addTo(affectedLayer);
+      allLayers.push(affected);
+      caseStudy.adminUnits.forEach((unit) => {
+        L.polygon(unit.boundary, { color: "#116d72", fillColor: "#116d72", fillOpacity: 0.08, weight: 1.4, dashArray: "5 5" }).bindTooltip(escapeHtml(unit.name), { sticky: true }).addTo(adminLayer);
+      });
+      const marker = L.circleMarker([caseStudy.event.latitude, caseStudy.event.longitude], { radius: Math.max(7, caseStudy.event.magnitude * 1.25), color: "#24302f", fillColor: "#f1b84b", fillOpacity: 0.92, weight: 2 }).bindPopup(`<strong>${escapeHtml(caseStudy.event.title)}</strong><br/>${escapeHtml(caseStudy.eventDate)}<br/>Mw ${escapeHtml(caseStudy.event.magnitude)}; depth ${escapeHtml(caseStudy.event.depthKm)} km<br/><a href="${escapeHtml(caseStudy.event.sourceUrl)}" target="_blank" rel="noreferrer">USGS event page</a>`);
+      marker.addTo(epicenterLayer);
+      allLayers.push(marker);
+    });
+    L.control.layers({}, { "Affected-area boundaries": affectedLayer, "Administrative units": adminLayer, "Earthquake epicenters": epicenterLayer }, { collapsed: false }).addTo(map);
+    map.fitBounds(L.featureGroup(allLayers).getBounds().pad(0.16));
+  };
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", bootCaseAtlas); else bootCaseAtlas();
+</script>
