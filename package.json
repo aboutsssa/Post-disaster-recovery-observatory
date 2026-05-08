@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "python scripts/generate_static_maps.py && astro build",
     "preview": "astro preview",
     "data:update": "python scripts/fetch_usgs.py && python scripts/fetch_reliefweb.py && python scripts/fetch_worldbank.py && python scripts/process_all.py"
   },
