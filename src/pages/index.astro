@@ -3,29 +3,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import ModuleCard from "../components/ModuleCard.astro";
 
 const modules = [
-  { name_en: "Disaster Impact", name_zh: "灾害冲击", description: "Event intensity, exposed places and people, damage footprints, and analytical disaster boundaries.", required_indicators: ["Magnitude", "Affected area", "Building damage", "Population exposure", "Disaster boundary"] },
-  { name_en: "Ecological Recovery", name_zh: "生态恢复", description: "Vegetation, burn or disturbance signals, land cover transition, ecosystem service value, and thermal environment.", required_indicators: ["NDVI", "EVI", "NBR", "LULC", "ESV", "Land surface temperature"] },
-  { name_en: "Economic Recovery", name_zh: "经济恢复", description: "Economic activity, fiscal capacity, industrial restructuring, investment, and long-run regional development.", required_indicators: ["Night-time lights", "GDP", "Industrial structure", "Investment", "Fiscal expenditure"] },
-  { name_en: "Population & Settlement", name_zh: "人口与居住", description: "Population redistribution, settlement rebuilding, relocation, built-up expansion, and accessibility change.", required_indicators: ["Population change", "Urban-rural population", "Built-up area", "Housing reconstruction", "Relocation", "Accessibility"] },
-  { name_en: "Social Sensing", name_zh: "社会感知", description: "Public attention, emotions, needs, topics, and risk perception from social media, news, and textual records.", required_indicators: ["Public emotions", "Topics", "Needs", "Risk perception", "Public attention", "Textual data"] },
-  { name_en: "Policy & Reconstruction", name_zh: "政策与重建", description: "Reconstruction strategies, plans, governance arrangements, fiscal input, and policy timelines.", required_indicators: ["Reconstruction strategies", "Fiscal input", "Policy timeline", "Planning zones", "Governance mechanisms"] }
+  { name_en: "Disaster Impact", name_zh: "灾害冲击", description: "Earthquake parameters, affected-area boundary, exposed settlements, damage footprints, and secondary hazard zones.", required_indicators: ["Magnitude", "Epicenter", "Affected boundary", "Damage footprint", "Population exposure"] },
+  { name_en: "Ecological Recovery", name_zh: "生态恢复", description: "Vegetation recovery, land-cover transition, landslide or burn scars, thermal environment, and ecosystem service signals inside the affected boundary.", required_indicators: ["NDVI", "EVI", "NBR", "LULC", "LST"] },
+  { name_en: "Economic Recovery", name_zh: "经济恢复", description: "Local economic activity and reconstruction dynamics measured through disaster-region proxies, not national averages.", required_indicators: ["Night-time lights", "Local POI recovery", "Business reopening", "Investment footprints"] },
+  { name_en: "Population & Settlement", name_zh: "人口与聚落", description: "Population exposure, displacement, return, relocation, settlement rebuilding, built-up expansion, and accessibility change.", required_indicators: ["WorldPop/GHSL", "Built-up area", "Relocation", "Housing reconstruction", "Accessibility"] },
+  { name_en: "Social Sensing", name_zh: "社会感知", description: "Public attention, needs, sentiment, topics, and risk perception from event-related reports, news, social media, and field records.", required_indicators: ["Public attention", "Needs", "Topics", "Sentiment", "Field notes"] },
+  { name_en: "Policy & Reconstruction", name_zh: "政策与重建", description: "Reconstruction strategies, plans, governance arrangements, financial inputs, land-use decisions, and recovery milestones.", required_indicators: ["Policy timeline", "Planning zones", "Fiscal input", "Governance", "Milestones"] }
 ];
 ---
 
 <BaseLayout>
   <section class="hero">
     <div class="container">
-      <p class="eyebrow">ReSpace Lab · Recovery · Resilience · Reimagine </p>
+      <p class="eyebrow">ReSpace Lab / Recovery / Resilience / Reimagine</p>
       <h1>Post-disaster Recovery Observatory</h1>
-      <p class="lead cn">灾后恢复长期监测台</p>
-      <p class="lead">
-        A reusable data-driven geospatial dashboard and research template for comparing
-        long-term recovery after major disaster events across ecological,
-        socioeconomic, demographic, social, and policy dimensions.
-      </p>
+      <p class="lead cn">灾后恢复长期观测台</p>
+      <p class="lead">A reusable geospatial website template for tracking how disaster-affected regions recover over years and decades. The first version now starts from affected boundaries, earthquake records, and administrative units.</p>
       <div class="hero-actions">
-        <a class="button" href={`${import.meta.env.BASE_URL}cases/`}>Explore Cases</a>
-        <a class="button secondary" href={`${import.meta.env.BASE_URL}indicators/`}>View Indicator System</a>
+        <a class="button" href={`${import.meta.env.BASE_URL}cases/`}>Open Case Atlas</a>
+        <a class="button secondary" href={`${import.meta.env.BASE_URL}methods/`}>Review Methods</a>
       </div>
     </div>
   </section>
@@ -34,14 +30,12 @@ const modules = [
     <div class="container">
       <div class="section-header">
         <div>
-          <p class="eyebrow">Comparative Observatory</p>
-          <h2>Recovery is a long-term spatial process.</h2>
+          <p class="eyebrow">Research Position</p>
+          <h2>Recovery is local, spatial, and long-term.</h2>
         </div>
-        <p>The observatory treats recovery as a changing relationship between landscapes, livelihoods, settlement systems, public experience, and reconstruction governance.</p>
+        <p>The site is being optimized as a case-based observatory. National-scale context is removed from the dashboard so the evidence stays focused on disaster regions and the people, settlements, ecosystems, and policies within them.</p>
       </div>
-      <div class="grid three">
-        {modules.map((module, index) => <ModuleCard module={module} index={index} />)}
-      </div>
+      <div class="grid three">{modules.map((module, index) => <ModuleCard module={module} index={index} />)}</div>
     </div>
   </section>
 </BaseLayout>

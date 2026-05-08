@@ -1,7 +1,7 @@
 ---
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "/cases/", label: "Cases" },
+  { href: "/cases/", label: "Case Atlas" },
   { href: "/indicators/", label: "Indicators" },
   { href: "/methods/", label: "Methods" },
   { href: "/data/", label: "Data" },
@@ -14,16 +14,10 @@ const navItems = [
     <span class="brand-mark">R</span>
     <span>
       <strong>Recovery Observatory</strong>
-      <small>灾后恢复长期监测台</small>
+      <small>灾后恢复长期观测台</small>
     </span>
   </a>
   <nav aria-label="Primary navigation">
-    {
-      navItems.map((item) => (
-        <a href={`${import.meta.env.BASE_URL}${item.href.replace(/^\//, "")}`}>
-          {item.label}
-        </a>
-      ))
-    }
+    {navItems.map((item) => <a href={`${import.meta.env.BASE_URL}${item.href.replace(/^\//, "")}`}>{item.label}</a>)}
   </nav>
 </header>

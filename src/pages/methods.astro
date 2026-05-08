@@ -2,27 +2,22 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Methods · Recovery Observatory">
+<BaseLayout title="Methods - Recovery Observatory">
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">Methods</p>
-      <h1>From event boundary to recovery trajectory.</h1>
-      <p class="lead">
-        The observatory is designed around reproducible spatial comparison:
-        define the disaster geography, normalize indicators, trace temporal
-        change, and interpret recovery through ecological, socioeconomic,
-        demographic, social, and policy evidence.
-      </p>
+      <h1>From affected boundary to recovery trajectory.</h1>
+      <p class="lead">The observatory now treats the disaster region as the unit of analysis: define the boundary, attach administrative units, aggregate indicators, and keep uncertainty visible.</p>
     </div>
   </section>
 
   <section class="section band">
     <div class="container">
       <div class="grid two">
-        <article class="card"><h3>Spatial Frame</h3><p>Establish a disaster boundary, affected administrative units, and comparable spatial grids or zones.</p></article>
-        <article class="card"><h3>Temporal Frame</h3><p>Store annual or milestone observations to distinguish emergency response, reconstruction, stabilization, and long-run transformation.</p></article>
-        <article class="card"><h3>Indicator Harmonization</h3><p>Keep raw data transparent, then derive comparable measures using consistent units, time windows, spatial aggregation, and uncertainty notes.</p></article>
-        <article class="card"><h3>Mixed Evidence</h3><p>Combine remote sensing, census and statistical data, policy texts, news, social media, planning documents, field observations, and interviews when available.</p></article>
+        <article class="card"><h3>Spatial Frame</h3><p>Start with a verified affected-area boundary, then connect relevant administrative units and comparable grids or zones.</p></article>
+        <article class="card"><h3>Temporal Frame</h3><p>Store annual or milestone observations to distinguish response, reconstruction, stabilization, and long-run transformation.</p></article>
+        <article class="card"><h3>Indicator Harmonization</h3><p>Aggregate values inside the disaster boundary using consistent units, time windows, spatial resolution, and uncertainty notes.</p></article>
+        <article class="card"><h3>Mixed Evidence</h3><p>Combine remote sensing, settlement data, local statistics, policy texts, field observations, interviews, and event-related social sensing.</p></article>
       </div>
     </div>
   </section>
@@ -34,16 +29,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <p class="eyebrow">Reproducible Pipeline</p>
           <h2>Every value needs a source trail.</h2>
         </div>
-        <p>
-          Fetch scripts write provenance logs first. The processing script then
-          turns those logs into chart-ready files and keeps missing geospatial
-          layers marked as <code>manual_required</code>.
-        </p>
+        <p>Fetch scripts write provenance logs first. Processing then turns event and affected-area inputs into chart-ready files. Missing geospatial layers stay marked as <code>manual_required</code>.</p>
       </div>
       <div class="grid three">
-        <article class="card"><h3>Fetch</h3><p><code>scripts/fetch_usgs.py</code>, <code>fetch_reliefweb.py</code>, and <code>fetch_worldbank.py</code> collect API responses and access notes under <code>public/data/provenance/</code>.</p></article>
-        <article class="card"><h3>Process</h3><p><code>scripts/process_all.py</code> standardizes event metadata, national context indicators, report frequency, and documented data gaps into <code>public/data/processed/</code>.</p></article>
-        <article class="card"><h3>Review</h3><p>Remote-sensing layers remain documented placeholders until boundary selection, raster download, masking, and zonal statistics are completed reproducibly.</p></article>
+        <article class="card"><h3>Fetch</h3><p><code>scripts/fetch_usgs.py</code> and <code>fetch_reliefweb.py</code> collect event metadata and report records under <code>public/data/provenance/</code>.</p></article>
+        <article class="card"><h3>Process</h3><p><code>scripts/process_all.py</code> standardizes earthquake metadata, report frequency, and documented affected-area data gaps into <code>public/data/processed/</code>.</p></article>
+        <article class="card"><h3>Review</h3><p>Remote-sensing and settlement indicators remain placeholders until boundary selection, raster processing, masking, and zonal statistics are complete.</p></article>
       </div>
     </div>
   </section>
