@@ -1,8 +1,10 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import CountyChoropleth from "../../components/CountyChoropleth.astro";
 import MiniLineChart from "../../components/MiniLineChart.astro";
 import StatusBadge from "../../components/StatusBadge.astro";
 import panel from "../../../public/data/processed/wenchuan-2008/panel_summary.json";
+import spatial from "../../../public/data/processed/wenchuan-2008/county_metric_summary.json";
 
 const chart = (key) => ({
   title: panel.chart_meta[key].title,
@@ -24,9 +26,9 @@ const moduleChartKeys = Object.fromEntries(panel.modules.map((module) => [module
       <p class="eyebrow">Pilot Case / County Panel Observatory</p>
       <h1>{panel.case_name}</h1>
       <p class="lead">
-        A long-term county-level recovery view built from the uploaded cleaned
-        panel dataset. The display follows the six-module observatory frame while
-        using the available indicators as fully as possible.
+        A county-level recovery observatory for the 2008 Wenchuan earthquake,
+        combining spatial heterogeneity, long-term trajectories, and six-module
+        recovery evidence across economy, ecology, population, and reconstruction.
       </p>
       <div class="hero-meta">
         <span>M {panel.event_profile.magnitude} {panel.event_profile.magnitude_type}</span>
@@ -56,7 +58,7 @@ const moduleChartKeys = Object.fromEntries(panel.modules.map((module) => [module
       <div class="section-header">
         <div>
           <p class="eyebrow">Data Frame</p>
-          <h2>Cleaned county panel, 2000-2020.</h2>
+          <h2>County panel and spatial unit alignment.</h2>
         </div>
         <p>
           {panel.panel.cleaning_note} {panel.panel.inflation_note}
@@ -70,15 +72,21 @@ const moduleChartKeys = Object.fromEntries(panel.modules.map((module) => [module
         </article>
         <article class="card compact-note">
           <h3>Panel source</h3>
-          <p>Uploaded Wenchuan county-level panel dataset and notes.</p>
+          <p>County-level socioeconomic and environmental panel, 2000-2020.</p>
           <StatusBadge status="available" />
         </article>
         <article class="card compact-note">
-          <h3>Interpretation rule</h3>
-          <p>Charts are descriptive aggregate views. Causal estimates should be added as a separate research layer.</p>
+          <h3>Spatial alignment</h3>
+          <p>{spatial.feature_count} county-level geometries are matched to the cleaned panel units.</p>
           <StatusBadge status="manual_review_required" />
         </article>
       </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <CountyChoropleth spatial={spatial} />
     </div>
   </section>
 
@@ -152,12 +160,13 @@ const moduleChartKeys = Object.fromEntries(panel.modules.map((module) => [module
         <p>{panel.modules.find((module) => module.id === "social-sensing").summary}</p>
       </div>
       <article class="card evidence-gap">
-        <StatusBadge status="manual_required" />
-        <h3>Next data layer</h3>
+        <StatusBadge status="manual_review_required" />
+        <h3>Qualitative evidence layer</h3>
         <p>
-          Add event-related news, reports, social media, interviews, or field
-          notes as a text corpus. This module should track attention, needs,
-          sentiment, topics, risk perception, and local memory.
+          This module is reserved for event-related news, reports, social media,
+          interviews, and field notes. It should be read alongside the county
+          panel to connect measured recovery with public attention, needs,
+          sentiment, risk perception, and local memory.
         </p>
       </article>
     </div>
@@ -177,4 +186,59 @@ const moduleChartKeys = Object.fromEntries(panel.modules.map((module) => [module
       </div>
     </div>
   </section>
+
+  <style>
+    .case-hero {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      background:
+        linear-gradient(120deg, rgba(255, 255, 255, 0.92), rgba(231, 240, 238, 0.76)),
+        radial-gradient(circle at 72% 26%, rgba(195, 91, 56, 0.15), transparent 22%),
+        radial-gradient(circle at 20% 82%, rgba(17, 109, 114, 0.14), transparent 24%);
+    }
+
+    .back-link {
+      display: inline-flex;
+      margin-bottom: 1rem;
+      color: var(--terracotta);
+      font-size: 0.82rem;
+      font-weight: 850;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero-meta span,
+    .metric-unit {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.74);
+      padding: 0.3rem 0.65rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .compact-note,
+    .evidence-gap {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .compact-note p,
+    .evidence-gap p {
+      margin: 0;
+    }
+
+    .module-section .section-header {
+      align-items: start;
+    }
+  </style>
 </BaseLayout>

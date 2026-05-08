@@ -9,7 +9,7 @@ const caseStudy = caseStudies.find((item) => item.id === "japan-311-2011");
   <section class="case-hero">
     <div class="container">
       <a class="back-link" href={`${import.meta.env.BASE_URL}cases/`}>Case Atlas</a>
-      <p class="eyebrow">Case Observatory Scaffold</p>
+      <p class="eyebrow">Reference Case</p>
       <h1>{caseStudy.name}</h1>
       <p class="lead">{caseStudy.researchFocus}</p>
       <div class="hero-meta">
@@ -23,13 +23,49 @@ const caseStudy = caseStudies.find((item) => item.id === "japan-311-2011");
   <section class="section">
     <div class="container">
       <article class="card evidence-gap">
-        <h2>Template ready for case-specific data.</h2>
+        <h2>Compound coastal recovery case.</h2>
         <p>
-          Add coastal municipality data, evacuation-zone records, tsunami
-          inundation layers, reconstruction policy timelines, and recovery
-          indicators to populate the same six-module structure used by Wenchuan.
+          This case will organize coastal municipality indicators, evacuation
+          zones, tsunami inundation layers, reconstruction policy timelines, and
+          long-term recovery evidence under the same six-module observatory
+          structure used for Wenchuan.
         </p>
       </article>
     </div>
   </section>
+  <style>
+    .case-hero {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.94), rgba(231, 240, 238, 0.72));
+    }
+
+    .back-link {
+      display: inline-flex;
+      margin-bottom: 1rem;
+      color: var(--terracotta);
+      font-size: 0.82rem;
+      font-weight: 850;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero-meta span {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.74);
+      padding: 0.3rem 0.65rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+  </style>
 </BaseLayout>

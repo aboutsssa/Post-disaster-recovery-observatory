@@ -32,7 +32,7 @@ export const caseStudies = [
     researchFocus: "Compound-disaster recovery case for coastal rebuilding, evacuation, demographic change, and governance.",
     folder: "public/data/cases/japan-311-2011/",
     href: "/cases/japan-311-2011/",
-    status: "Template scaffold",
+    status: "Reference case",
     marker: { x: 69, y: 38 },
     event: {
       title: "M 9.1 - Great Tohoku earthquake",
@@ -55,7 +55,7 @@ export const caseStudies = [
     researchFocus: "Himalayan recovery case for settlement reconstruction, accessibility, livelihoods, and aid governance.",
     folder: "public/data/cases/nepal-gorkha-2015/",
     href: "/cases/nepal-gorkha-2015/",
-    status: "Template scaffold",
+    status: "Reference case",
     marker: { x: 52, y: 53 },
     event: {
       title: "M 7.8 - Gorkha earthquake",

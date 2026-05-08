@@ -3,16 +3,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import CaseCard from "../components/CaseCard.astro";
 import CaseAtlasMap from "../components/CaseAtlasMap.astro";
 import { caseStudies, observatoryPrinciples } from "../data/cases.js";
+
+const cases = caseStudies.map((caseStudy) => ({
+  ...caseStudy,
+  summary: caseStudy.researchFocus
+}));
 ---
 
 <BaseLayout title="Case Atlas - Recovery Observatory">
   <section class="page-hero atlas-hero">
     <div class="container">
       <p class="eyebrow">Case Atlas</p>
-      <h1>Pilot cases as entry points.</h1>
+      <h1>Global case atlas for long-term recovery observation.</h1>
       <p class="lead">
-        The atlas now works as a clean spatial index. Click a marker or case
-        card to open the full observatory page for that disaster.
+        Each marker locates a disaster case at the global scale. Open a case to
+        view its spatial units, recovery indicators, and case-specific evidence.
       </p>
     </div>
   </section>
@@ -28,15 +33,16 @@ import { caseStudies, observatoryPrinciples } from "../data/cases.js";
       <div class="section-header">
         <div>
           <p class="eyebrow">Pilot Cases</p>
-          <h2>Open a case-specific observatory.</h2>
+          <h2>Case-specific observatories.</h2>
         </div>
         <p>
-          Analytical boundaries, module charts, and evidence notes are handled
-          inside the individual case pages rather than on this directory page.
+          The atlas provides geographic orientation. Detailed county maps,
+          module charts, and evidence interpretation are organized inside each
+          individual case page.
         </p>
       </div>
       <div class="grid three">
-        {caseStudies.map((caseStudy) => <CaseCard caseStudy={caseStudy} />)}
+        {cases.map((caseStudy) => <CaseCard caseStudy={caseStudy} />)}
       </div>
     </div>
   </section>

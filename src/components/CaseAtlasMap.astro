@@ -1,197 +1,125 @@
 ---
 const { cases } = Astro.props;
 
-const projectedCases = cases.map((caseStudy) => {
-  const longitude = Number(caseStudy.event?.longitude);
-  const latitude = Number(caseStudy.event?.latitude);
-  const hasCoordinates = Number.isFinite(longitude) && Number.isFinite(latitude);
-  const x = hasCoordinates ? ((longitude + 180) / 360) * 100 : caseStudy.marker.x;
-  const y = hasCoordinates ? ((90 - latitude) / 180) * 100 : caseStudy.marker.y;
-  const labelX = x > 82 || caseStudy.id === "nepal-gorkha-2015" ? "-100%" : "0.85rem";
-  const labelY = caseStudy.id === "nepal-gorkha-2015" ? "0.65rem" : "-2.25rem";
-
-  return {
-    ...caseStudy,
-    mapX: Math.min(96, Math.max(4, x)),
-    mapY: Math.min(92, Math.max(8, y)),
-    labelX,
-    labelY
-  };
-});
+const markers = cases.map((caseStudy) => ({
+  id: caseStudy.id,
+  name: caseStudy.name,
+  country: caseStudy.country,
+  year: caseStudy.year,
+  href: `${import.meta.env.BASE_URL}${caseStudy.href.replace(/^\//, "")}`,
+  latitude: caseStudy.event?.latitude,
+  longitude: caseStudy.event?.longitude,
+  magnitude: caseStudy.event?.magnitude
+}));
 ---
 
-<div class="marker-map" aria-label="Pilot case locations">
-  <div class="map-grain"></div>
-  <svg class="world-map" viewBox="0 0 1000 500" aria-hidden="true" preserveAspectRatio="none">
-    <defs>
-      <linearGradient id="atlasLand" x1="0" x2="1" y1="0" y2="1">
-        <stop offset="0%" stop-color="#d7dccf" stop-opacity="0.72" />
-        <stop offset="100%" stop-color="#9fb5a5" stop-opacity="0.5" />
-      </linearGradient>
-    </defs>
-    <g class="graticule">
-      <path d="M100 0V500 M250 0V500 M400 0V500 M550 0V500 M700 0V500 M850 0V500" />
-      <path d="M0 100H1000 M0 200H1000 M0 300H1000 M0 400H1000" />
-    </g>
-    <g class="continents">
-      <path d="M85 146L121 108L179 79L247 88L294 126L280 181L229 202L216 250L172 265L131 229L90 203Z" />
-      <path d="M226 262L269 286L302 351L289 421L246 458L210 403L192 338Z" />
-      <path d="M463 117L536 79L628 86L706 111L793 96L889 132L914 190L856 221L785 199L724 224L642 203L569 220L500 191Z" />
-      <path d="M527 220L594 235L635 286L628 365L587 430L539 398L511 320Z" />
-      <path d="M689 240L737 260L758 318L721 337L678 306Z" />
-      <path d="M781 342L835 334L893 359L915 407L865 440L802 418Z" />
-      <path d="M436 136L467 130L474 165L445 182L417 164Z" />
-      <path d="M455 430L514 421L563 446L528 474L469 465Z" />
-    </g>
-    <g class="region-glow">
-      <ellipse cx="790" cy="165" rx="170" ry="82" />
-    </g>
-  </svg>
-  <div class="map-route route-one"></div>
-  <div class="map-route route-two"></div>
-  {projectedCases.map((caseStudy) => (
-    <a
-      class="case-marker"
-      href={`${import.meta.env.BASE_URL}${caseStudy.href.replace(/^\//, "")}`}
-      style={`--x: ${caseStudy.mapX}%; --y: ${caseStudy.mapY}%; --label-x: ${caseStudy.labelX}; --label-y: ${caseStudy.labelY};`}
-      aria-label={`Open ${caseStudy.name}`}
-    >
-      <span class="marker-dot"></span>
-      <span class="marker-label">
-        <strong>{caseStudy.name}</strong>
-        <small>{caseStudy.country} / {caseStudy.year}</small>
-      </span>
-    </a>
-  ))}
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIINfQPDLaB7KjRA5/0M4QGzX5hnRraRYQk="
+  crossorigin=""
+/>
+
+<div class="atlas-map-shell">
+  <div id="case-atlas-map" class="case-atlas-map" data-markers={JSON.stringify(markers)}></div>
+  <div class="atlas-map-caption">
+    <span>Standard Web Mercator basemap</span>
+    <span>Markers locate event epicenters; case-specific boundaries are shown on individual observatory pages.</span>
+  </div>
 </div>
 
-<style>
-  .marker-map {
-    position: relative;
-    overflow: hidden;
-    min-height: clamp(360px, 54vw, 620px);
-    border: 1px solid rgba(36, 48, 47, 0.14);
-    border-radius: 8px;
-    background:
-      radial-gradient(circle at 28% 30%, rgba(239, 176, 87, 0.32), transparent 18%),
-      radial-gradient(circle at 68% 42%, rgba(58, 118, 126, 0.24), transparent 22%),
-      linear-gradient(145deg, #192322 0%, #24302f 45%, #4d493e 100%);
-    box-shadow: 0 28px 80px rgba(18, 28, 27, 0.18);
-  }
+<script
+  is:inline
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin=""
+></script>
 
-  .map-grain {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-    background-size: 38px 38px;
-    mask-image: radial-gradient(circle at center, black, transparent 78%);
-  }
+<script is:inline>
+  const mapElement = document.getElementById("case-atlas-map");
+  if (mapElement && window.L) {
+    const markers = JSON.parse(mapElement.dataset.markers || "[]");
+    const map = L.map(mapElement, {
+      scrollWheelZoom: false,
+      zoomControl: true,
+      worldCopyJump: true
+    }).setView([30, 104], 3);
 
-  .world-map {
-    position: absolute;
-    inset: 5% 4% 8%;
-    width: 92%;
-    height: 87%;
-    filter: drop-shadow(0 24px 36px rgba(0, 0, 0, 0.22));
-  }
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+      maxZoom: 8,
+      minZoom: 2,
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    }).addTo(map);
 
-  .graticule path {
-    fill: none;
-    stroke: rgba(247, 242, 232, 0.11);
-    stroke-width: 1;
-  }
+    const bounds = [];
+    markers.forEach((item) => {
+      const lat = Number(item.latitude);
+      const lng = Number(item.longitude);
+      if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
+      bounds.push([lat, lng]);
+      const marker = L.circleMarker([lat, lng], {
+        radius: 8,
+        color: "#24302f",
+        weight: 1.8,
+        fillColor: "#c35b38",
+        fillOpacity: 0.92
+      }).addTo(map);
+      marker.bindPopup(
+        `<strong>${item.name}</strong><br>${item.country} / ${item.year}<br>M ${item.magnitude}<br><a href="${item.href}">Open observatory</a>`
+      );
+    });
 
-  .continents path {
-    fill: url(#atlasLand);
-    stroke: rgba(247, 242, 232, 0.18);
-    stroke-width: 1.4;
-    vector-effect: non-scaling-stroke;
-  }
-
-  .region-glow ellipse {
-    fill: rgba(241, 184, 75, 0.09);
-    stroke: rgba(241, 184, 75, 0.18);
-    stroke-width: 1.2;
-  }
-
-  .map-route {
-    position: absolute;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(241, 184, 75, 0.58), transparent);
-    transform-origin: left center;
-  }
-
-  .route-one {
-    left: 75%;
-    top: 34%;
-    width: 14%;
-    transform: rotate(-16deg);
-  }
-
-  .route-two {
-    left: 73%;
-    top: 35%;
-    width: 7%;
-    transform: rotate(-10deg);
-  }
-
-  .case-marker {
-    position: absolute;
-    left: var(--x);
-    top: var(--y);
-    z-index: 2;
-    display: grid;
-    gap: 0.55rem;
-    max-width: 230px;
-    color: #f7f2e8;
-    text-decoration: none;
-    transform: translate(-16px, -16px);
-  }
-
-  .marker-dot {
-    width: 32px;
-    height: 32px;
-    border: 2px solid #f7f2e8;
-    border-radius: 999px;
-    background: #f1b84b;
-    box-shadow: 0 0 0 10px rgba(241, 184, 75, 0.18), 0 0 32px rgba(241, 184, 75, 0.42);
-    transition: transform 160ms ease;
-  }
-
-  .marker-label {
-    position: absolute;
-    left: 2.1rem;
-    top: 0.15rem;
-    display: grid;
-    gap: 0.1rem;
-    min-width: 148px;
-    border-left: 1px solid rgba(247, 242, 232, 0.45);
-    padding-left: 0.75rem;
-    text-shadow: 0 1px 18px rgba(0, 0, 0, 0.45);
-    transform: translate(var(--label-x), var(--label-y));
-  }
-
-  .marker-label strong {
-    font-size: 0.96rem;
-    line-height: 1.2;
-  }
-
-  .marker-label small {
-    color: rgba(247, 242, 232, 0.74);
-    font-weight: 750;
-    text-transform: uppercase;
-  }
-
-  .case-marker:hover .marker-dot {
-    transform: scale(1.12);
-  }
-
-  @media (max-width: 680px) {
-    .marker-label {
-      max-width: 150px;
-      font-size: 0.86rem;
+    if (bounds.length > 1) {
+      map.fitBounds(bounds, { padding: [60, 60], maxZoom: 4 });
     }
+  }
+</script>
+
+<style>
+  .atlas-map-shell {
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface-strong);
+    box-shadow: var(--shadow);
+  }
+
+  .case-atlas-map {
+    width: 100%;
+    height: min(68vh, 640px);
+    min-height: 430px;
+    background: #dfe7e5;
+  }
+
+  .case-atlas-map :global(.leaflet-container) {
+    font-family: inherit;
+  }
+
+  .atlas-map-caption {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem;
+    border-top: 1px solid var(--line);
+    padding: 0.8rem 1rem;
+    color: var(--muted);
+    font-size: 0.86rem;
+    font-weight: 750;
+  }
+
+  .atlas-map-caption span:first-child {
+    color: var(--ink);
+  }
+
+  :global(.leaflet-popup-content) {
+    color: var(--ink);
+    line-height: 1.45;
+  }
+
+  :global(.leaflet-popup-content a) {
+    color: var(--terracotta);
+    font-weight: 800;
+    text-decoration: none;
   }
 </style>

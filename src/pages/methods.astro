@@ -7,7 +7,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <div class="container">
       <p class="eyebrow">Methods</p>
       <h1>From affected boundary to recovery trajectory.</h1>
-      <p class="lead">The observatory now treats the disaster region as the unit of analysis: define the boundary, attach administrative units, aggregate indicators, and keep uncertainty visible.</p>
+      <p class="lead">
+        The observatory now treats the disaster region as the unit of analysis:
+        define the boundary, attach administrative units, aggregate indicators,
+        and keep uncertainty visible.
+      </p>
     </div>
   </section>
 
@@ -29,12 +33,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <p class="eyebrow">Reproducible Pipeline</p>
           <h2>Every value needs a source trail.</h2>
         </div>
-        <p>Fetch scripts write provenance logs first. Processing then turns event and affected-area inputs into chart-ready files. Missing geospatial layers stay marked as <code>manual_required</code>.</p>
+        <p>
+          Fetch scripts write provenance logs first. Processing then turns event
+          and affected-area inputs into chart-ready files. Missing geospatial
+          layers stay marked as <code>manual_required</code>.
+        </p>
       </div>
       <div class="grid three">
         <article class="card"><h3>Fetch</h3><p><code>scripts/fetch_usgs.py</code> and <code>fetch_reliefweb.py</code> collect event metadata and report records under <code>public/data/provenance/</code>.</p></article>
         <article class="card"><h3>Process</h3><p><code>scripts/process_all.py</code> standardizes earthquake metadata, report frequency, and documented affected-area data gaps into <code>public/data/processed/</code>.</p></article>
-        <article class="card"><h3>Review</h3><p>Remote-sensing and settlement indicators remain placeholders until boundary selection, raster processing, masking, and zonal statistics are complete.</p></article>
+        <article class="card"><h3>Review</h3><p>Remote-sensing and settlement indicators are published only after boundary selection, raster processing, masking, and zonal statistics are complete.</p></article>
       </div>
     </div>
   </section>
