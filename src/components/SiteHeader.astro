@@ -14,10 +14,16 @@ const navItems = [
     <span class="brand-mark">R</span>
     <span>
       <strong>Recovery Observatory</strong>
-      <small>灾后恢复长期观测台</small>
+      <small>Long-term spatial recovery research</small>
     </span>
   </a>
   <nav aria-label="Primary navigation">
-    {navItems.map((item) => <a href={`${import.meta.env.BASE_URL}${item.href.replace(/^\//, "")}`}>{item.label}</a>)}
+    {
+      navItems.map((item) => (
+        <a href={`${import.meta.env.BASE_URL}${item.href.replace(/^\//, "")}`}>
+          {item.label}
+        </a>
+      ))
+    }
   </nav>
 </header>

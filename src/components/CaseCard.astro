@@ -1,6 +1,8 @@
 ---
 const { caseStudy } = Astro.props;
 const hazards = Array.isArray(caseStudy.hazards) ? caseStudy.hazards.join(", ") : caseStudy.hazards;
+const href = caseStudy.href ? `${import.meta.env.BASE_URL}${caseStudy.href.replace(/^\//, "")}` : null;
+const summary = caseStudy.summary || caseStudy.researchFocus;
 ---
 
 <article class="card case-card">
@@ -8,9 +10,8 @@ const hazards = Array.isArray(caseStudy.hazards) ? caseStudy.hazards.join(", ") 
     <span>{caseStudy.year}</span>
     <span>{caseStudy.country}</span>
   </div>
-  <h3>{caseStudy.name}</h3>
-  <p class="cn">{caseStudy.nameZh}</p>
-  <p>{caseStudy.summary}</p>
+  <h3>{href ? <a href={href}>{caseStudy.name}</a> : caseStudy.name}</h3>
+  <p>{summary}</p>
   <dl class="case-facts">
     <div>
       <dt>Event</dt>
@@ -21,8 +22,9 @@ const hazards = Array.isArray(caseStudy.hazards) ? caseStudy.hazards.join(", ") 
       <dd>{hazards}</dd>
     </div>
     <div>
-      <dt>Data folder</dt>
-      <dd><code>{caseStudy.folder}</code></dd>
+      <dt>Status</dt>
+      <dd>{caseStudy.status || "Template scaffold"}</dd>
     </div>
   </dl>
+  {href && <a class="case-link" href={href}>Open observatory</a>}
 </article>

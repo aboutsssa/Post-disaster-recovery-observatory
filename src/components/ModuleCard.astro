@@ -5,7 +5,6 @@ const { module, index } = Astro.props;
 <article class="card module-card">
   <span class="module-index">{String(index + 1).padStart(2, "0")}</span>
   <h3>{module.name_en}</h3>
-  <p class="cn">{module.name_zh}</p>
   <p>{module.description}</p>
   <div class="tag-list" aria-label={`${module.name_en} required indicators`}>
     {module.required_indicators.slice(0, 6).map((indicator) => <span>{indicator}</span>)}

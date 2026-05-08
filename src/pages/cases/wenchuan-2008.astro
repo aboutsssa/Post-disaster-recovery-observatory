@@ -1,0 +1,180 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import MiniLineChart from "../../components/MiniLineChart.astro";
+import StatusBadge from "../../components/StatusBadge.astro";
+import panel from "../../../public/data/processed/wenchuan-2008/panel_summary.json";
+
+const chart = (key) => ({
+  title: panel.chart_meta[key].title,
+  points: panel.series[key],
+  source: panel.chart_meta[key].source,
+  unit: panel.chart_meta[key].unit,
+  method: panel.chart_meta[key].method,
+  status: "available",
+  eventYear: panel.event_year
+});
+
+const moduleChartKeys = Object.fromEntries(panel.modules.map((module) => [module.id, module.charts]));
+---
+
+<BaseLayout title="Wenchuan 5.12 Earthquake - Recovery Observatory">
+  <section class="case-hero wenchuan-hero">
+    <div class="container">
+      <a class="back-link" href={`${import.meta.env.BASE_URL}cases/`}>Case Atlas</a>
+      <p class="eyebrow">Pilot Case / County Panel Observatory</p>
+      <h1>{panel.case_name}</h1>
+      <p class="lead">
+        A long-term county-level recovery view built from the uploaded cleaned
+        panel dataset. The display follows the six-module observatory frame while
+        using the available indicators as fully as possible.
+      </p>
+      <div class="hero-meta">
+        <span>M {panel.event_profile.magnitude} {panel.event_profile.magnitude_type}</span>
+        <span>{panel.event_profile.date}</span>
+        <span>{panel.panel.start_year}-{panel.panel.end_year}</span>
+        <span>{panel.panel.county_units} county-level units</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid three">
+        {panel.headline_metrics.map((item) => (
+          <article class="metric-card">
+            <p>{item.label}</p>
+            <strong>{item.value}</strong>
+            <span class="metric-unit">{item.unit}</span>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Data Frame</p>
+          <h2>Cleaned county panel, 2000-2020.</h2>
+        </div>
+        <p>
+          {panel.panel.cleaning_note} {panel.panel.inflation_note}
+        </p>
+      </div>
+      <div class="grid three">
+        <article class="card compact-note">
+          <h3>Event marker</h3>
+          <p>{panel.event_profile.source}; {panel.event_profile.epicenter}.</p>
+          <StatusBadge status="api_verified" />
+        </article>
+        <article class="card compact-note">
+          <h3>Panel source</h3>
+          <p>Uploaded Wenchuan county-level panel dataset and notes.</p>
+          <StatusBadge status="available" />
+        </article>
+        <article class="card compact-note">
+          <h3>Interpretation rule</h3>
+          <p>Charts are descriptive aggregate views. Causal estimates should be added as a separate research layer.</p>
+          <StatusBadge status="manual_review_required" />
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section module-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">01 / Disaster Impact</p>
+          <h2>Event shock and observation frame.</h2>
+        </div>
+        <p>{panel.modules.find((module) => module.id === "disaster-impact").summary}</p>
+      </div>
+      <div class="grid two">
+        {moduleChartKeys["disaster-impact"].map((key) => <MiniLineChart {...chart(key)} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section band module-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">02 / Ecological Recovery</p>
+          <h2>Vegetation, ecosystem value, pollution, and climate signals.</h2>
+        </div>
+        <p>{panel.modules.find((module) => module.id === "ecological-recovery").summary}</p>
+      </div>
+      <div class="grid two">
+        {moduleChartKeys["ecological-recovery"].map((key) => <MiniLineChart {...chart(key)} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section module-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">03 / Economic Recovery</p>
+          <h2>Production, sectors, fiscal input, and investment.</h2>
+        </div>
+        <p>{panel.modules.find((module) => module.id === "economic-recovery").summary}</p>
+      </div>
+      <div class="grid two">
+        {moduleChartKeys["economic-recovery"].map((key) => <MiniLineChart {...chart(key)} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section band module-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">04 / Population & Settlement</p>
+          <h2>Population base and urbanization.</h2>
+        </div>
+        <p>{panel.modules.find((module) => module.id === "population-settlement").summary}</p>
+      </div>
+      <div class="grid two">
+        {moduleChartKeys["population-settlement"].map((key) => <MiniLineChart {...chart(key)} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section module-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">05 / Social Sensing</p>
+          <h2>Evidence gap to be filled by text and field records.</h2>
+        </div>
+        <p>{panel.modules.find((module) => module.id === "social-sensing").summary}</p>
+      </div>
+      <article class="card evidence-gap">
+        <StatusBadge status="manual_required" />
+        <h3>Next data layer</h3>
+        <p>
+          Add event-related news, reports, social media, interviews, or field
+          notes as a text corpus. This module should track attention, needs,
+          sentiment, topics, risk perception, and local memory.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section band module-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">06 / Policy & Reconstruction</p>
+          <h2>Fiscal expenditure and fixed-asset investment as input proxies.</h2>
+        </div>
+        <p>{panel.modules.find((module) => module.id === "policy-reconstruction").summary}</p>
+      </div>
+      <div class="grid two">
+        {moduleChartKeys["policy-reconstruction"].map((key) => <MiniLineChart {...chart(key)} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

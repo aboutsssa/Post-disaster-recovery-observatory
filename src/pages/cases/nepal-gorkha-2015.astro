@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { caseStudies } from "../../data/cases.js";
+
+const caseStudy = caseStudies.find((item) => item.id === "nepal-gorkha-2015");
+---
+
+<BaseLayout title="Nepal 2015 Gorkha Earthquake - Recovery Observatory">
+  <section class="case-hero">
+    <div class="container">
+      <a class="back-link" href={`${import.meta.env.BASE_URL}cases/`}>Case Atlas</a>
+      <p class="eyebrow">Case Observatory Scaffold</p>
+      <h1>{caseStudy.name}</h1>
+      <p class="lead">{caseStudy.researchFocus}</p>
+      <div class="hero-meta">
+        <span>{caseStudy.country}</span>
+        <span>{caseStudy.eventDate}</span>
+        <span>M {caseStudy.event.magnitude} {caseStudy.event.magnitudeType}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <article class="card evidence-gap">
+        <h2>Template ready for case-specific data.</h2>
+        <p>
+          Add affected-district boundaries, housing reconstruction records,
+          accessibility indicators, rural livelihood data, remote-sensing
+          recovery layers, and policy timelines to populate the same six-module
+          structure used by Wenchuan.
+        </p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

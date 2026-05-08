@@ -1,46 +1,24 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CaseCard from "../components/CaseCard.astro";
-import MetricCard from "../components/MetricCard.astro";
-import MiniLineChart from "../components/MiniLineChart.astro";
-import TimelineList from "../components/TimelineList.astro";
-import StatusBadge from "../components/StatusBadge.astro";
-import SourcePanel from "../components/SourcePanel.astro";
 import CaseAtlasMap from "../components/CaseAtlasMap.astro";
 import { caseStudies, observatoryPrinciples } from "../data/cases.js";
-import observatory from "../../public/data/processed/nepal-gorkha-2015/observatory.json";
-
-const cases = caseStudies.map((caseStudy) => ({ ...caseStudy, summary: caseStudy.researchFocus }));
-const nepal = caseStudies.find((caseStudy) => caseStudy.id === "nepal-gorkha-2015");
-const event = observatory.event_profile;
-const disasterYear = 2015;
-const localDataLayers = [observatory.ecological_recovery, observatory.economic_recovery_proxy.night_time_lights, observatory.population_settlement.settlement_exposure, observatory.social_sensing];
-const provenanceSources = [
-  { name: "USGS earthquake events", status: observatory.event_profile.data_quality, description: "Magnitude, event time, epicenter, and depth for the pilot earthquake records.", provenance: "public/data/provenance/nepal-gorkha-2015/usgs_event.json", method: observatory.event_profile.processing_method },
-  { name: "Affected-area GIS boundary", status: "manual_required", description: "A disaster boundary must be selected before ecological, settlement, and economic recovery indicators are computed.", provenance: "public/data/cases/{case-id}/metadata.yml and future GeoJSON boundary files", method: "Use official disaster boundary, verified affected administrative units, or a documented analytical recovery zone." },
-  { name: "Remote sensing layers", status: observatory.ecological_recovery.data_quality, description: "NDVI/EVI, land cover, built-up area, night-time lights, and gridded population should be aggregated only inside the affected-area boundary.", provenance: "gee/", method: observatory.ecological_recovery.processing_method },
-  { name: "ReliefWeb reports", status: observatory.social_sensing.data_quality, description: "Humanitarian report frequency and policy timeline candidates. These are event-related textual records, not national socioeconomic indicators.", provenance: "public/data/provenance/nepal-gorkha-2015/reliefweb_reports.json", method: observatory.social_sensing.processing_method }
-];
 ---
 
 <BaseLayout title="Case Atlas - Recovery Observatory">
-  <section class="page-hero">
+  <section class="page-hero atlas-hero">
     <div class="container">
       <p class="eyebrow">Case Atlas</p>
-      <h1>Start from disaster regions, not national averages.</h1>
-      <p class="lead">The observatory is being reorganized around affected-area boundaries, earthquake event records, and administrative units. National-scale GDP and population charts are intentionally removed from the public case view.</p>
+      <h1>Pilot cases as entry points.</h1>
+      <p class="lead">
+        The atlas now works as a clean spatial index. Click a marker or case
+        card to open the full observatory page for that disaster.
+      </p>
     </div>
   </section>
 
   <section class="section map-section">
     <div class="container">
-      <div class="section-header">
-        <div>
-          <p class="eyebrow">Spatial Entry</p>
-          <h2>Boundary, epicenter, administrative frame.</h2>
-        </div>
-        <p>This first atlas uses Leaflet and OpenStreetMap tiles, so it does not need a Google API key. The pilot polygons are research placeholders; they make the template usable now while keeping the boundary status explicit.</p>
-      </div>
       <CaseAtlasMap cases={caseStudies} />
     </div>
   </section>
@@ -49,69 +27,29 @@ const provenanceSources = [
     <div class="container">
       <div class="section-header">
         <div>
-          <p class="eyebrow">Reusable Case Template</p>
-          <h2>Three pilot cases, one data structure.</h2>
+          <p class="eyebrow">Pilot Cases</p>
+          <h2>Open a case-specific observatory.</h2>
         </div>
-        <p>Each case has the same folder pattern and the same six research modules. New disasters can be added by creating one case metadata folder, one boundary layer, and the module CSV files.</p>
-      </div>
-      <div class="grid three">{cases.map((caseStudy) => <CaseCard caseStudy={caseStudy} />)}</div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <div>
-          <p class="eyebrow">Data Rule</p>
-          <h2>Affected-area first.</h2>
-        </div>
-        <p>The dashboard should answer how a disaster region recovers over time. National data may be useful in a paper appendix, but it should not be the default visual evidence here.</p>
-      </div>
-      <div class="grid three">{observatoryPrinciples.map((principle) => <article class="card principle-card"><p>{principle}</p></article>)}</div>
-    </div>
-  </section>
-
-  <section class="section band">
-    <div class="container">
-      <div class="section-header">
-        <div>
-          <p class="eyebrow">Pilot Observatory</p>
-          <h2>{observatory.case_name}</h2>
-        </div>
-        <p>Nepal is kept as the first data-driven pilot because the USGS event profile is already verified. Local recovery indicators remain marked as <code>manual_required</code> until boundary-based processing is run.</p>
-      </div>
-      <div class="quality-strip">
-        <StatusBadge status={event.data_quality} />
-        <StatusBadge status={observatory.ecological_recovery.data_quality} />
-        <StatusBadge status={observatory.economic_recovery_proxy.night_time_lights.data_quality} />
-        <StatusBadge status={observatory.population_settlement.settlement_exposure.data_quality} />
-        <StatusBadge status={observatory.social_sensing.data_quality} />
+        <p>
+          Analytical boundaries, module charts, and evidence notes are handled
+          inside the individual case pages rather than on this directory page.
+        </p>
       </div>
       <div class="grid three">
-        <MetricCard label="Magnitude" value={`${event.magnitude} ${event.magnitude_type}`} source={event.source} unit="moment magnitude" method={event.processing_method} status={event.data_quality} />
-        <MetricCard label="Epicenter" value={`${event.latitude}, ${event.longitude}`} source={event.source} unit="decimal degrees" method={event.processing_method} status={event.data_quality} />
-        <MetricCard label="Affected Boundary" value={nepal?.adminScale || "District reference units"} source="Pilot case atlas" unit="research boundary" method={nepal?.boundaryStatus} status="manual_required" />
+        {caseStudies.map((caseStudy) => <CaseCard caseStudy={caseStudy} />)}
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="section-header">
-        <div>
-          <p class="eyebrow">Local Indicators</p>
-          <h2>Only show values after boundary-based aggregation.</h2>
-        </div>
-        <p>These cards are intentionally empty until the affected-area boundary is connected to remote-sensing, settlement, economic proxy, and social sensing workflows.</p>
+      <div class="grid three">
+        {observatoryPrinciples.map((principle) => (
+          <article class="card principle-card">
+            <p>{principle}</p>
+          </article>
+        ))}
       </div>
-      <div class="grid two">{localDataLayers.map((layer) => <MiniLineChart title={layer.title} points={layer.points} source={layer.source} unit={layer.unit} method={layer.processing_method} status={layer.data_quality} emptyText={layer.status} note={layer.notes} eventYear={disasterYear} />)}</div>
-    </div>
-  </section>
-
-  <section class="section band">
-    <div class="container">
-      <TimelineList title={observatory.policy_reconstruction_timeline.title} entries={observatory.policy_reconstruction_timeline.entries} source={observatory.policy_reconstruction_timeline.source} unit={observatory.policy_reconstruction_timeline.unit} method={observatory.policy_reconstruction_timeline.processing_method} status={observatory.policy_reconstruction_timeline.data_quality} emptyText={observatory.policy_reconstruction_timeline.status} />
-      <SourcePanel sources={provenanceSources} />
     </div>
   </section>
 </BaseLayout>

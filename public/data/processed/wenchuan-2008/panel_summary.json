@@ -1,0 +1,1127 @@
+{
+  "case_id": "wenchuan-2008",
+  "case_name": "Wenchuan 5.12 Earthquake",
+  "event_year": 2008,
+  "panel": {
+    "rows": 3717,
+    "county_units": 177,
+    "start_year": 2000,
+    "end_year": 2020,
+    "source_file": "STU_yujiuwei/Wenchuan earthquake county panel dataset",
+    "cleaning_note": "The uploaded notes state that administrative units affected by boundary splits were excluded, leaving 177 county-level units.",
+    "inflation_note": "Real GDP, sector outputs, and real GDP per capita use growth-index adjustments. Fiscal expenditure and fixed-asset investment are not inflation-adjusted."
+  },
+  "event_profile": {
+    "magnitude": 7.9,
+    "magnitude_type": "Mw",
+    "date": "2008-05-12",
+    "epicenter": "near Wenchuan County, Sichuan",
+    "source": "USGS Earthquake Hazards Program"
+  },
+  "headline_metrics": [
+    {
+      "label": "County panel units",
+      "value": "177",
+      "unit": "county-level units"
+    },
+    {
+      "label": "Observation window",
+      "value": "2000-2020",
+      "unit": "annual panel"
+    },
+    {
+      "label": "Panel records",
+      "value": "3,717",
+      "unit": "county-year rows"
+    },
+    {
+      "label": "Mean GDP index change",
+      "value": "668.6%",
+      "unit": "2000 to 2020"
+    },
+    {
+      "label": "Mean NDVI change",
+      "value": "16.0%",
+      "unit": "2000 to 2020"
+    },
+    {
+      "label": "Population change",
+      "value": "0.4%",
+      "unit": "2000 to 2020"
+    }
+  ],
+  "series": {
+    "gdp_index_mean": [
+      {
+        "year": 2000,
+        "label": "2000",
+        "value": 1.0
+      },
+      {
+        "year": 2002,
+        "label": "2002",
+        "value": 1.2081
+      },
+      {
+        "year": 2004,
+        "label": "2004",
+        "value": 1.5278
+      },
+      {
+        "year": 2006,
+        "label": "2006",
+        "value": 1.9543
+      },
+      {
+        "year": 2008,
+        "label": "2008",
+        "value": 2.4546
+      },
+      {
+        "year": 2010,
+        "label": "2010",
+        "value": 3.265
+      },
+      {
+        "year": 2012,
+        "label": "2012",
+        "value": 4.2883
+      },
+      {
+        "year": 2014,
+        "label": "2014",
+        "value": 5.1237
+      },
+      {
+        "year": 2016,
+        "label": "2016",
+        "value": 5.9508
+      },
+      {
+        "year": 2018,
+        "label": "2018",
+        "value": 6.9056
+      },
+      {
+        "year": 2020,
+        "label": "2020",
+        "value": 7.6859
+      }
+    ],
+    "real_gdp_total": [
+      {
+        "year": 2000,
+        "label": "2000",
+        "value": 39542939.0
+      },
+      {
+        "year": 2002,
+        "label": "2002",
+        "value": 48139175.0
+      },
+      {
+        "year": 2004,
+        "label": "2004",
+        "value": 61469133.0
+      },
+      {
+        "year": 2006,
+        "label": "2006",
+        "value": 79334554.0
+      },
+      {
+        "year": 2008,
+        "label": "2008",
+        "value": 101013601.0
+      },
+      {
+        "year": 2010,
+        "label": "2010",
+        "value": 133921716.0
+      },
+      {
+        "year": 2012,
+        "label": "2012",
+        "value": 175207932.0
+      },
+      {
+        "year": 2014,
+        "label": "2014",
+        "value": 209854715.0
+      },
+      {
+        "year": 2016,
+        "label": "2016",
+        "value": 245843016.0
+      },
+      {
+        "year": 2018,
+        "label": "2018",
+        "value": 288131992.0
+      },
+      {
+        "year": 2020,
+        "label": "2020",
+        "value": 322527770.0
+      }
+    ],
+    "real_pop_gdp_mean": [
+      {
+        "year": 2000,
+        "label": "2000",
+        "value": 5004.7088
+      },
+      {
+        "year": 2002,
+        "label": "2002",
+        "value": 6019.1483
+      },
+      {
+        "year": 2004,
+        "label": "2004",
+        "value": 7508.2474
+      },
+      {
+        "year": 2006,
+        "label": "2006",
+        "value": 9537.6155
+      },
+      {
+        "year": 2008,
+        "label": "2008",
+        "value": 11845.8515
+      },
+      {
+        "year": 2010,
+        "label": "2010",
+        "value": 15541.9634
+      },
+      {
+        "year": 2012,
+        "label": "2012",
+        "value": 20376.5461
+      },
+      {
+        "year": 2014,
+        "label": "2014",
+        "value": 24125.8193
+      },
+      {
+        "year": 2016,
+        "label": "2016",
+        "value": 27805.5704
+      },
+      {
+        "year": 2018,
+        "label": "2018",
+        "value": 31970.927
+      },
+      {
+        "year": 2020,
+        "label": "2020",
+        "value": 35499.1773
+      }
+    ],
+    "primary_industry_total": [
+      {
+        "year": 2000,
+        "label": "2000",
+        "value": 9041372.0
+      },
+      {
+        "year": 2002,
+        "label": "2002",
+        "value": 9655213.0
+      },
+      {
+        "year": 2004,
+        "label": "2004",
+        "value": 10872352.0
+      },
+      {
+        "year": 2006,
+        "label": "2006",
+        "value": 11970678.0
+      },
+      {
+        "year": 2008,
+        "label": "2008",
+        "value": 12957912.0
+      },
+      {
+        "year": 2010,
+        "label": "2010",
+        "value": 14083660.0
+      },
+      {
+        "year": 2012,
+        "label": "2012",
+        "value": 15277666.0
+      },
+      {
+        "year": 2014,
+        "label": "2014",
+        "value": 16467016.0
+      },
+      {
+        "year": 2016,
+        "label": "2016",
+        "value": 17761039.0
+      },
+      {
+        "year": 2018,
+        "label": "2018",
+        "value": 19133248.0
+      },
+      {
+        "year": 2020,
+        "label": "2020",
+        "value": 20674592.0
+      }
+    ],
+    "secondary_industry_total": [
+      {
+        "year": 2000,
+        "label": "2000",
+        "value": 15805982.0
+      },
+      {
+        "year": 2002,
+        "label": "2002",
+        "value": 20297160.1374
+      },
+      {
+        "year": 2004,
+        "label": "2004",
+        "value": 27929582.37
+      },
+      {
+        "year": 2006,
+        "label": "2006",
+        "value": 40740981.8
+      },
+      {
+        "year": 2008,
+        "label": "2008",
+        "value": 56807433.32
+      },
+      {
+        "year": 2010,
+        "label": "2010",
+        "value": 83252576.9
+      },
+      {
+        "year": 2012,
+        "label": "2012",
+        "value": 117476783.12
+      },
+      {
+        "year": 2014,
+        "label": "2014",
+        "value": 143211963.83
+      },
+      {
+        "year": 2016,
+        "label": "2016",
+        "value": 167951427.48
+      },
+      {
+        "year": 2018,
+        "label": "2018",
+        "value": 196624948.44
+      },
+      {
+        "year": 2020,
+        "label": "2020",
+        "value": 220769881.84
+      }
+    ],
+    "tertiary_industry_total": [
+      {
+        "year": 2000,
+        "label": "2000",
+        "value": 14695583.0
+      },
+      {
+        "year": 2002,
+        "label": "2002",
+        "value": 18205209.0585
+      },
+      {
+        "year": 2004,
+        "label": "2004",
+        "value": 22802954.2601
+      },
+      {
+        "year": 2006,
+        "label": "2006",
+        "value": 27859373.4253
+      },
+      {
+        "year": 2008,
+        "label": "2008",
+        "value": 34215861.9361
+      },
+      {
+        "year": 2010,
+        "label": "2010",
+        "value": 42669760.1326
+      },
+      {
+        "year": 2012,
+        "label": "2012",
+        "value": 53332029.9083
+      },
+      {
+        "year": 2014,
+        "label": "2014",
+        "value": 63928366.1607
+      },
+      {
+        "year": 2016,
+        "label": "2016",
+        "value": 76572964.8861
+      },
+      {
+        "year": 2018,
+        "label": "2018",
+        "value": 91778487.5873
+      },
+      {
+        "year": 2020,
+        "label": "2020",
+        "value": 103364436.5314
+      }
+    ],
+    "fixed_asset_investment_total": [
+      {
+        "year": 2000,
+        "label": "2000",
+        "value": 10915490.0
+      },
+      {
+        "year": 2002,
+        "label": "2002",
+        "value": 15974671.0
+      },
+      {
+        "year": 2004,
+        "label": "2004",
+        "value": 24790705.0
+      },
+      {
+        "year": 2006,
+        "label": "2006",
+        "value": 41372212.0
+      },
+      {
+        "year": 2008,
+        "label": "2008",
+        "value": 69958567.0
+      },
+      {
+        "year": 2010,
+        "label": "2010",
+        "value": 126203715.0
+      },
+      {
+        "year": 2012,
+        "label": "2012",
+        "value": 164992135.0
+      },
+      {
+        "year": 2014,
+        "label": "2014",
+        "value": 214538906.0
+      },
+      {
+        "year": 2016,
+        "label": "2016",
+        "value": 261897477.0
+      },
+      {
+        "year": 2018,
+        "label": "2018",
+        "value": 318150595.56
+      },
+      {
+        "year": 2020,
+        "label": "2020",
+        "value": 353811200.11
+      }
+    ],
+    "fiscal_expenditure_total": [
+      {
+        "year": 2000,
+        "label": "2000",
+        "value": 2437142.0
+      },
+      {
+        "year": 2002,
+        "label": "2002",
+        "value": 3700086.0
+      },
+      {
+        "year": 2004,
+        "label": "2004",
+        "value": 5326340.0
+      },
+      {
+        "year": 2006,
+        "label": "2006",
+        "value": 8238882.0
+      },
+      {
+        "year": 2008,
+        "label": "2008",
+        "value": 20839852.0
+      },
+      {
+        "year": 2010,
+        "label": "2010",
+        "value": 28946854.0
+      },
+      {
+        "year": 2012,
+        "label": "2012",
+        "value": 34192339.0
+      },
+      {
+        "year": 2014,
+        "label": "2014",
+        "value": 44082234.0
+      },
+      {
+        "year": 2016,
+        "label": "2016",
+        "value": 51223749.0
+      },
+      {
+        "year": 2018,
+        "label": "2018",
+        "value": 60155466.0
+      },
+      {
+        "year": 2020,
+        "label": "2020",
+        "value": 69454968.0
+      }
+    ],
+    "population_total": [
+      {
+        "year": 2000,
+        "label": "2000",
+        "value": 7951.7
+      },
+      {
+        "year": 2002,
+        "label": "2002",
+        "value": 8011.9
+      },
+      {
+        "year": 2004,
+        "label": "2004",
+        "value": 8125.5
+      },
+      {
+        "year": 2006,
+        "label": "2006",
+        "value": 8246.7
+      },
+      {
+        "year": 2008,
+        "label": "2008",
+        "value": 8421.9
+      },
+      {
+        "year": 2010,
+        "label": "2010",
+        "value": 8511.2
+      },
+      {
+        "year": 2012,
+        "label": "2012",
+        "value": 8605.7
+      },
+      {
+        "year": 2014,
+        "label": "2014",
+        "value": 8665.9
+      },
+      {
+        "year": 2016,
+        "label": "2016",
+        "value": 7853.0831
+      },
+      {
+        "year": 2018,
+        "label": "2018",
+        "value": 7927.6
+      },
+      {
+        "year": 2020,
+        "label": "2020",
+        "value": 7984.7
+      }
+    ],
+    "urbanization_mean": [
+      {
+        "year": 2000,
+        "label": "2000",
+        "value": 0.2004
+      },
+      {
+        "year": 2002,
+        "label": "2002",
+        "value": 0.2079
+      },
+      {
+        "year": 2004,
+        "label": "2004",
+        "value": 0.2268
+      },
+      {
+        "year": 2006,
+        "label": "2006",
+        "value": 0.2365
+      },
+      {
+        "year": 2008,
+        "label": "2008",
+        "value": 0.2443
+      },
+      {
+        "year": 2010,
+        "label": "2010",
+        "value": 0.2553
+      },
+      {
+        "year": 2012,
+        "label": "2012",
+        "value": 0.2662
+      },
+      {
+        "year": 2014,
+        "label": "2014",
+        "value": 0.2797
+      },
+      {
+        "year": 2016,
+        "label": "2016",
+        "value": 0.4342
+      },
+      {
+        "year": 2018,
+        "label": "2018",
+        "value": 0.461
+      },
+      {
+        "year": 2020,
+        "label": "2020",
+        "value": 0.4737
+      }
+    ],
+    "ndvi_mean": [
+      {
+        "year": 2000,
+        "label": "2000",
+        "value": 0.515
+      },
+      {
+        "year": 2002,
+        "label": "2002",
+        "value": 0.531
+      },
+      {
+        "year": 2004,
+        "label": "2004",
+        "value": 0.5335
+      },
+      {
+        "year": 2006,
+        "label": "2006",
+        "value": 0.5432
+      },
+      {
+        "year": 2008,
+        "label": "2008",
+        "value": 0.5384
+      },
+      {
+        "year": 2010,
+        "label": "2010",
+        "value": 0.5426
+      },
+      {
+        "year": 2012,
+        "label": "2012",
+        "value": 0.5401
+      },
+      {
+        "year": 2014,
+        "label": "2014",
+        "value": 0.5716
+      },
+      {
+        "year": 2016,
+        "label": "2016",
+        "value": 0.5853
+      },
+      {
+        "year": 2018,
+        "label": "2018",
+        "value": 0.5812
+      },
+      {
+        "year": 2020,
+        "label": "2020",
+        "value": 0.5973
+      }
+    ],
+    "esv_total": [
+      {
+        "year": 2000,
+        "label": "2000",
+        "value": 4857.2
+      },
+      {
+        "year": 2002,
+        "label": "2002",
+        "value": 5032.29
+      },
+      {
+        "year": 2004,
+        "label": "2004",
+        "value": 7882.1
+      },
+      {
+        "year": 2006,
+        "label": "2006",
+        "value": 6613.56
+      },
+      {
+        "year": 2008,
+        "label": "2008",
+        "value": 9086.01
+      },
+      {
+        "year": 2010,
+        "label": "2010",
+        "value": 11044.22
+      },
+      {
+        "year": 2012,
+        "label": "2012",
+        "value": 14195.73
+      },
+      {
+        "year": 2014,
+        "label": "2014",
+        "value": 13814.94
+      },
+      {
+        "year": 2016,
+        "label": "2016",
+        "value": 13397.23
+      },
+      {
+        "year": 2018,
+        "label": "2018",
+        "value": 13614.5
+      },
+      {
+        "year": 2020,
+        "label": "2020",
+        "value": 15196.05
+      }
+    ],
+    "co2_total": [
+      {
+        "year": 2000,
+        "label": "2000",
+        "value": 17530766.71
+      },
+      {
+        "year": 2002,
+        "label": "2002",
+        "value": 21285028.85
+      },
+      {
+        "year": 2004,
+        "label": "2004",
+        "value": 26714176.68
+      },
+      {
+        "year": 2006,
+        "label": "2006",
+        "value": 35058336.32
+      },
+      {
+        "year": 2008,
+        "label": "2008",
+        "value": 40403886.29
+      },
+      {
+        "year": 2010,
+        "label": "2010",
+        "value": 47597650.0
+      },
+      {
+        "year": 2012,
+        "label": "2012",
+        "value": 54483400.65
+      },
+      {
+        "year": 2014,
+        "label": "2014",
+        "value": 55739040.51
+      },
+      {
+        "year": 2016,
+        "label": "2016",
+        "value": 54927011.73
+      },
+      {
+        "year": 2018,
+        "label": "2018",
+        "value": 57874903.88
+      },
+      {
+        "year": 2020,
+        "label": "2020",
+        "value": 61158205.64
+      }
+    ],
+    "pm10_mean": [
+      {
+        "year": 2000,
+        "label": "2000",
+        "value": 70.0023
+      },
+      {
+        "year": 2002,
+        "label": "2002",
+        "value": 75.4124
+      },
+      {
+        "year": 2004,
+        "label": "2004",
+        "value": 78.0211
+      },
+      {
+        "year": 2006,
+        "label": "2006",
+        "value": 87.683
+      },
+      {
+        "year": 2008,
+        "label": "2008",
+        "value": 86.5754
+      },
+      {
+        "year": 2010,
+        "label": "2010",
+        "value": 84.8005
+      },
+      {
+        "year": 2012,
+        "label": "2012",
+        "value": 81.6312
+      },
+      {
+        "year": 2014,
+        "label": "2014",
+        "value": 82.803
+      },
+      {
+        "year": 2016,
+        "label": "2016",
+        "value": 67.9632
+      },
+      {
+        "year": 2018,
+        "label": "2018",
+        "value": 57.5609
+      },
+      {
+        "year": 2020,
+        "label": "2020",
+        "value": 42.4069
+      }
+    ],
+    "o3_mean": [
+      {
+        "year": 2000,
+        "label": "2000",
+        "value": 76.6802
+      },
+      {
+        "year": 2002,
+        "label": "2002",
+        "value": 79.2869
+      },
+      {
+        "year": 2004,
+        "label": "2004",
+        "value": 77.2771
+      },
+      {
+        "year": 2006,
+        "label": "2006",
+        "value": 81.4516
+      },
+      {
+        "year": 2008,
+        "label": "2008",
+        "value": 78.0787
+      },
+      {
+        "year": 2010,
+        "label": "2010",
+        "value": 76.8475
+      },
+      {
+        "year": 2012,
+        "label": "2012",
+        "value": 76.0981
+      },
+      {
+        "year": 2014,
+        "label": "2014",
+        "value": 76.0217
+      },
+      {
+        "year": 2016,
+        "label": "2016",
+        "value": 82.7945
+      },
+      {
+        "year": 2018,
+        "label": "2018",
+        "value": 91.4578
+      },
+      {
+        "year": 2020,
+        "label": "2020",
+        "value": 89.6727
+      }
+    ],
+    "temperature_mean": [
+      {
+        "year": 2000,
+        "label": "2000",
+        "value": 12.8481
+      },
+      {
+        "year": 2002,
+        "label": "2002",
+        "value": 13.4648
+      },
+      {
+        "year": 2004,
+        "label": "2004",
+        "value": 13.021
+      },
+      {
+        "year": 2006,
+        "label": "2006",
+        "value": 13.5722
+      },
+      {
+        "year": 2008,
+        "label": "2008",
+        "value": 12.9156
+      },
+      {
+        "year": 2010,
+        "label": "2010",
+        "value": 13.397
+      },
+      {
+        "year": 2012,
+        "label": "2012",
+        "value": 13.0178
+      },
+      {
+        "year": 2014,
+        "label": "2014",
+        "value": 13.2965
+      },
+      {
+        "year": 2016,
+        "label": "2016",
+        "value": 13.6254
+      },
+      {
+        "year": 2018,
+        "label": "2018",
+        "value": 13.4111
+      },
+      {
+        "year": 2020,
+        "label": "2020",
+        "value": 13.5006
+      }
+    ]
+  },
+  "modules": [
+    {
+      "id": "disaster-impact",
+      "title": "Disaster Impact",
+      "summary": "The panel frames the Wenchuan earthquake as a long-run county-level recovery study across Sichuan units, with 2008 used as the event marker.",
+      "charts": [
+        "gdp_index_mean",
+        "population_total"
+      ]
+    },
+    {
+      "id": "ecological-recovery",
+      "title": "Ecological Recovery",
+      "summary": "Ecological tracking is represented by NDVI, ecosystem service value, pollution variables, and temperature.",
+      "charts": [
+        "ndvi_mean",
+        "esv_total",
+        "co2_total",
+        "pm10_mean",
+        "o3_mean",
+        "temperature_mean"
+      ]
+    },
+    {
+      "id": "economic-recovery",
+      "title": "Economic Recovery",
+      "summary": "Economic recovery is represented by real GDP, GDP index, real GDP per capita, sector outputs, public expenditure, and fixed-asset investment.",
+      "charts": [
+        "real_gdp_total",
+        "gdp_index_mean",
+        "real_pop_gdp_mean",
+        "primary_industry_total",
+        "secondary_industry_total",
+        "tertiary_industry_total",
+        "fixed_asset_investment_total"
+      ]
+    },
+    {
+      "id": "population-settlement",
+      "title": "Population & Settlement",
+      "summary": "Population and settlement dynamics are proxied by population totals and urbanization rate.",
+      "charts": [
+        "population_total",
+        "urbanization_mean"
+      ]
+    },
+    {
+      "id": "social-sensing",
+      "title": "Social Sensing",
+      "summary": "The uploaded panel does not include social media, news, interview, or field-text indicators. This module is kept as a documented gap for future enrichment.",
+      "charts": []
+    },
+    {
+      "id": "policy-reconstruction",
+      "title": "Policy & Reconstruction",
+      "summary": "Fiscal expenditure and fixed-asset investment are used as policy and reconstruction input proxies, with an explicit caveat that they are not inflation-adjusted.",
+      "charts": [
+        "fiscal_expenditure_total",
+        "fixed_asset_investment_total"
+      ]
+    }
+  ],
+  "chart_meta": {
+    "real_gdp_total": {
+      "title": "Total real GDP",
+      "unit": "10k yuan",
+      "source": "Uploaded county panel",
+      "method": "Annual sum across 177 cleaned county-level units."
+    },
+    "gdp_index_mean": {
+      "title": "Mean normalized GDP index",
+      "unit": "index",
+      "source": "Uploaded county panel",
+      "method": "Annual mean across 177 cleaned county-level units."
+    },
+    "real_pop_gdp_mean": {
+      "title": "Mean real GDP per capita",
+      "unit": "yuan/person",
+      "source": "Uploaded county panel",
+      "method": "Annual mean across 177 cleaned county-level units."
+    },
+    "primary_industry_total": {
+      "title": "Primary industry output",
+      "unit": "10k yuan",
+      "source": "Uploaded county panel",
+      "method": "Annual sum of real primary industry output."
+    },
+    "secondary_industry_total": {
+      "title": "Secondary industry output",
+      "unit": "10k yuan",
+      "source": "Uploaded county panel",
+      "method": "Annual sum of real secondary industry output."
+    },
+    "tertiary_industry_total": {
+      "title": "Tertiary industry output",
+      "unit": "10k yuan",
+      "source": "Uploaded county panel",
+      "method": "Annual sum of real tertiary industry output."
+    },
+    "fiscal_expenditure_total": {
+      "title": "Fiscal expenditure",
+      "unit": "10k yuan",
+      "source": "Uploaded county panel",
+      "method": "Annual sum; not inflation-adjusted according to uploaded notes."
+    },
+    "fixed_asset_investment_total": {
+      "title": "Fixed-asset investment",
+      "unit": "10k yuan",
+      "source": "Uploaded county panel",
+      "method": "Annual sum; not inflation-adjusted according to uploaded notes."
+    },
+    "population_total": {
+      "title": "Total population",
+      "unit": "10k people",
+      "source": "Uploaded county panel",
+      "method": "Annual sum across 177 cleaned county-level units."
+    },
+    "urbanization_mean": {
+      "title": "Mean urbanization rate",
+      "unit": "ratio",
+      "source": "Uploaded county panel",
+      "method": "Annual mean across 177 cleaned county-level units."
+    },
+    "co2_total": {
+      "title": "Total CO2 emissions",
+      "unit": "tons",
+      "source": "Uploaded county panel",
+      "method": "Annual sum across 177 cleaned county-level units."
+    },
+    "o3_mean": {
+      "title": "Mean ozone concentration",
+      "unit": "ug/m3",
+      "source": "Uploaded county panel",
+      "method": "Annual mean across 177 cleaned county-level units."
+    },
+    "pm10_mean": {
+      "title": "Mean PM10 concentration",
+      "unit": "ug/m3",
+      "source": "Uploaded county panel",
+      "method": "Annual mean across 177 cleaned county-level units."
+    },
+    "temperature_mean": {
+      "title": "Mean temperature",
+      "unit": "Celsius",
+      "source": "Uploaded county panel",
+      "method": "Annual mean across 177 cleaned county-level units."
+    },
+    "esv_total": {
+      "title": "Total ecosystem service value",
+      "unit": "100m yuan",
+      "source": "Uploaded county panel",
+      "method": "Annual sum across 177 cleaned county-level units."
+    },
+    "ndvi_mean": {
+      "title": "Mean NDVI",
+      "unit": "index",
+      "source": "Uploaded county panel",
+      "method": "Annual mean across 177 cleaned county-level units."
+    }
+  }
+}
