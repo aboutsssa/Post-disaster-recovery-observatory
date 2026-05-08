@@ -1,16 +1,59 @@
 ---
 const { cases } = Astro.props;
+
+const projectedCases = cases.map((caseStudy) => {
+  const longitude = Number(caseStudy.event?.longitude);
+  const latitude = Number(caseStudy.event?.latitude);
+  const hasCoordinates = Number.isFinite(longitude) && Number.isFinite(latitude);
+  const x = hasCoordinates ? ((longitude + 180) / 360) * 100 : caseStudy.marker.x;
+  const y = hasCoordinates ? ((90 - latitude) / 180) * 100 : caseStudy.marker.y;
+  const labelX = x > 82 || caseStudy.id === "nepal-gorkha-2015" ? "-100%" : "0.85rem";
+  const labelY = caseStudy.id === "nepal-gorkha-2015" ? "0.65rem" : "-2.25rem";
+
+  return {
+    ...caseStudy,
+    mapX: Math.min(96, Math.max(4, x)),
+    mapY: Math.min(92, Math.max(8, y)),
+    labelX,
+    labelY
+  };
+});
 ---
 
 <div class="marker-map" aria-label="Pilot case locations">
   <div class="map-grain"></div>
+  <svg class="world-map" viewBox="0 0 1000 500" aria-hidden="true" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="atlasLand" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stop-color="#d7dccf" stop-opacity="0.72" />
+        <stop offset="100%" stop-color="#9fb5a5" stop-opacity="0.5" />
+      </linearGradient>
+    </defs>
+    <g class="graticule">
+      <path d="M100 0V500 M250 0V500 M400 0V500 M550 0V500 M700 0V500 M850 0V500" />
+      <path d="M0 100H1000 M0 200H1000 M0 300H1000 M0 400H1000" />
+    </g>
+    <g class="continents">
+      <path d="M85 146L121 108L179 79L247 88L294 126L280 181L229 202L216 250L172 265L131 229L90 203Z" />
+      <path d="M226 262L269 286L302 351L289 421L246 458L210 403L192 338Z" />
+      <path d="M463 117L536 79L628 86L706 111L793 96L889 132L914 190L856 221L785 199L724 224L642 203L569 220L500 191Z" />
+      <path d="M527 220L594 235L635 286L628 365L587 430L539 398L511 320Z" />
+      <path d="M689 240L737 260L758 318L721 337L678 306Z" />
+      <path d="M781 342L835 334L893 359L915 407L865 440L802 418Z" />
+      <path d="M436 136L467 130L474 165L445 182L417 164Z" />
+      <path d="M455 430L514 421L563 446L528 474L469 465Z" />
+    </g>
+    <g class="region-glow">
+      <ellipse cx="790" cy="165" rx="170" ry="82" />
+    </g>
+  </svg>
   <div class="map-route route-one"></div>
   <div class="map-route route-two"></div>
-  {cases.map((caseStudy) => (
+  {projectedCases.map((caseStudy) => (
     <a
       class="case-marker"
       href={`${import.meta.env.BASE_URL}${caseStudy.href.replace(/^\//, "")}`}
-      style={`--x: ${caseStudy.marker.x}%; --y: ${caseStudy.marker.y}%;`}
+      style={`--x: ${caseStudy.mapX}%; --y: ${caseStudy.mapY}%; --label-x: ${caseStudy.labelX}; --label-y: ${caseStudy.labelY};`}
       aria-label={`Open ${caseStudy.name}`}
     >
       <span class="marker-dot"></span>
@@ -36,22 +79,6 @@ const { cases } = Astro.props;
     box-shadow: 0 28px 80px rgba(18, 28, 27, 0.18);
   }
 
-  .marker-map::before,
-  .marker-map::after {
-    content: "";
-    position: absolute;
-    inset: 10%;
-    border: 1px solid rgba(244, 247, 245, 0.12);
-    border-radius: 49% 51% 45% 55%;
-    transform: rotate(-10deg);
-  }
-
-  .marker-map::after {
-    inset: 22% 16%;
-    border-color: rgba(241, 184, 75, 0.18);
-    transform: rotate(14deg);
-  }
-
   .map-grain {
     position: absolute;
     inset: 0;
@@ -62,6 +89,33 @@ const { cases } = Astro.props;
     mask-image: radial-gradient(circle at center, black, transparent 78%);
   }
 
+  .world-map {
+    position: absolute;
+    inset: 5% 4% 8%;
+    width: 92%;
+    height: 87%;
+    filter: drop-shadow(0 24px 36px rgba(0, 0, 0, 0.22));
+  }
+
+  .graticule path {
+    fill: none;
+    stroke: rgba(247, 242, 232, 0.11);
+    stroke-width: 1;
+  }
+
+  .continents path {
+    fill: url(#atlasLand);
+    stroke: rgba(247, 242, 232, 0.18);
+    stroke-width: 1.4;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .region-glow ellipse {
+    fill: rgba(241, 184, 75, 0.09);
+    stroke: rgba(241, 184, 75, 0.18);
+    stroke-width: 1.2;
+  }
+
   .map-route {
     position: absolute;
     height: 2px;
@@ -69,8 +123,19 @@ const { cases } = Astro.props;
     transform-origin: left center;
   }
 
-  .route-one { left: 42%; top: 49%; width: 26%; transform: rotate(-14deg); }
-  .route-two { left: 50%; top: 53%; width: 19%; transform: rotate(-54deg); }
+  .route-one {
+    left: 75%;
+    top: 34%;
+    width: 14%;
+    transform: rotate(-16deg);
+  }
+
+  .route-two {
+    left: 73%;
+    top: 35%;
+    width: 7%;
+    transform: rotate(-10deg);
+  }
 
   .case-marker {
     position: absolute;
@@ -96,18 +161,37 @@ const { cases } = Astro.props;
   }
 
   .marker-label {
+    position: absolute;
+    left: 2.1rem;
+    top: 0.15rem;
     display: grid;
     gap: 0.1rem;
+    min-width: 148px;
     border-left: 1px solid rgba(247, 242, 232, 0.45);
     padding-left: 0.75rem;
     text-shadow: 0 1px 18px rgba(0, 0, 0, 0.45);
+    transform: translate(var(--label-x), var(--label-y));
   }
 
-  .marker-label strong { font-size: 0.96rem; line-height: 1.2; }
-  .marker-label small { color: rgba(247, 242, 232, 0.74); font-weight: 750; text-transform: uppercase; }
-  .case-marker:hover .marker-dot { transform: scale(1.12); }
+  .marker-label strong {
+    font-size: 0.96rem;
+    line-height: 1.2;
+  }
+
+  .marker-label small {
+    color: rgba(247, 242, 232, 0.74);
+    font-weight: 750;
+    text-transform: uppercase;
+  }
+
+  .case-marker:hover .marker-dot {
+    transform: scale(1.12);
+  }
 
   @media (max-width: 680px) {
-    .marker-label { max-width: 150px; font-size: 0.86rem; }
+    .marker-label {
+      max-width: 150px;
+      font-size: 0.86rem;
+    }
   }
 </style>
