@@ -1,99 +1,130 @@
 ---
-const { cases } = Astro.props;
+import { worldMapPaths } from "../data/worldMapPaths.js";
 
-const markers = cases.map((caseStudy) => ({
-  id: caseStudy.id,
-  name: caseStudy.name,
-  country: caseStudy.country,
-  year: caseStudy.year,
-  href: `${import.meta.env.BASE_URL}${caseStudy.href.replace(/^\//, "")}`,
-  latitude: caseStudy.event?.latitude,
-  longitude: caseStudy.event?.longitude,
-  magnitude: caseStudy.event?.magnitude
-}));
+const { cases } = Astro.props;
+const width = 1000;
+const height = 500;
+const project = (latitude, longitude) => ({
+  x: ((Number(longitude) + 180) / 360) * width,
+  y: ((90 - Number(latitude)) / 180) * height
+});
+
+const markers = cases
+  .map((caseStudy) => {
+    const latitude = caseStudy.event?.latitude;
+    const longitude = caseStudy.event?.longitude;
+    if (!Number.isFinite(Number(latitude)) || !Number.isFinite(Number(longitude))) return null;
+    return {
+      id: caseStudy.id,
+      name: caseStudy.name,
+      country: caseStudy.country,
+      year: caseStudy.year,
+      href: `${import.meta.env.BASE_URL}${caseStudy.href.replace(/^\//, "")}`,
+      magnitude: caseStudy.event?.magnitude,
+      ...project(latitude, longitude)
+    };
+  })
+  .filter(Boolean);
+
+const graticuleX = [-120, -60, 0, 60, 120].map((longitude) => ((longitude + 180) / 360) * width);
+const graticuleY = [-60, -30, 0, 30, 60].map((latitude) => ((90 - latitude) / 180) * height);
 ---
 
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  integrity="sha256-p4NxAoJBhIINfQPDLaB7KjRA5/0M4QGzX5hnRraRYQk="
-  crossorigin=""
-/>
-
 <div class="atlas-map-shell">
-  <div id="case-atlas-map" class="case-atlas-map" data-markers={JSON.stringify(markers)}></div>
+  <svg class="atlas-map" viewBox={`0 0 ${width} ${height}`} role="img" aria-label="World map locating disaster recovery cases">
+    <rect class="ocean" width={width} height={height}></rect>
+    {graticuleX.map((x) => <line class="graticule" x1={x} y1="0" x2={x} y2={height} />)}
+    {graticuleY.map((y) => <line class="graticule" x1="0" y1={y} x2={width} y2={y} />)}
+    <g class="land">
+      {worldMapPaths.map((path) => <path d={path}></path>)}
+    </g>
+    <g class="markers">
+      {markers.map((marker, index) => (
+        <a href={marker.href} aria-label={`Open ${marker.name}`}>
+          <circle class="marker-halo" cx={marker.x} cy={marker.y} r="15"></circle>
+          <circle class="marker" cx={marker.x} cy={marker.y} r="6.5"></circle>
+          <text
+            x={marker.x + 11}
+            y={marker.y + (index === 1 ? -9 : 18)}
+            text-anchor={index === 1 ? "start" : "start"}
+          >
+            {marker.year} / {marker.country}
+          </text>
+          <title>{marker.name} / M {marker.magnitude}</title>
+        </a>
+      ))}
+    </g>
+  </svg>
   <div class="atlas-map-caption">
-    <span>Standard Web Mercator basemap</span>
-    <span>Markers locate event epicenters; case-specific boundaries are shown on individual observatory pages.</span>
+    <span>Local Natural Earth vector basemap</span>
+    <span>Markers locate event epicenters; analytical boundaries are shown inside each case observatory.</span>
   </div>
 </div>
-
-<script
-  is:inline
-  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-  crossorigin=""
-></script>
-
-<script is:inline>
-  const mapElement = document.getElementById("case-atlas-map");
-  if (mapElement && window.L) {
-    const markers = JSON.parse(mapElement.dataset.markers || "[]");
-    const map = L.map(mapElement, {
-      scrollWheelZoom: false,
-      zoomControl: true,
-      worldCopyJump: true
-    }).setView([30, 104], 3);
-
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-      maxZoom: 8,
-      minZoom: 2,
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-    }).addTo(map);
-
-    const bounds = [];
-    markers.forEach((item) => {
-      const lat = Number(item.latitude);
-      const lng = Number(item.longitude);
-      if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
-      bounds.push([lat, lng]);
-      const marker = L.circleMarker([lat, lng], {
-        radius: 8,
-        color: "#24302f",
-        weight: 1.8,
-        fillColor: "#c35b38",
-        fillOpacity: 0.92
-      }).addTo(map);
-      marker.bindPopup(
-        `<strong>${item.name}</strong><br>${item.country} / ${item.year}<br>M ${item.magnitude}<br><a href="${item.href}">Open observatory</a>`
-      );
-    });
-
-    if (bounds.length > 1) {
-      map.fitBounds(bounds, { padding: [60, 60], maxZoom: 4 });
-    }
-  }
-</script>
 
 <style>
   .atlas-map-shell {
     overflow: hidden;
     border: 1px solid var(--line);
     border-radius: 8px;
-    background: var(--surface-strong);
+    background: #f6f3ec;
     box-shadow: var(--shadow);
   }
 
-  .case-atlas-map {
+  .atlas-map {
+    display: block;
     width: 100%;
-    height: min(68vh, 640px);
     min-height: 430px;
-    background: #dfe7e5;
+    aspect-ratio: 2 / 1;
   }
 
-  .case-atlas-map :global(.leaflet-container) {
-    font-family: inherit;
+  .ocean {
+    fill: #dbe5e2;
+  }
+
+  .graticule {
+    stroke: rgba(36, 48, 47, 0.13);
+    stroke-width: 0.8;
+  }
+
+  .land path {
+    fill: #f8f7f2;
+    stroke: rgba(92, 101, 98, 0.42);
+    stroke-width: 0.6;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .markers a {
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .marker-halo {
+    fill: rgba(195, 91, 56, 0.14);
+    stroke: rgba(195, 91, 56, 0.22);
+    stroke-width: 1.2;
+  }
+
+  .marker {
+    fill: #c35b38;
+    stroke: #24302f;
+    stroke-width: 1.6;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .markers a:hover .marker,
+  .markers a:focus .marker {
+    fill: #116d72;
+  }
+
+  .markers text {
+    fill: #24302f;
+    font-size: 14px;
+    font-weight: 850;
+    paint-order: stroke;
+    stroke: #f8f7f2;
+    stroke-linejoin: round;
+    stroke-width: 4px;
   }
 
   .atlas-map-caption {
@@ -112,14 +143,13 @@ const markers = cases.map((caseStudy) => ({
     color: var(--ink);
   }
 
-  :global(.leaflet-popup-content) {
-    color: var(--ink);
-    line-height: 1.45;
-  }
+  @media (max-width: 720px) {
+    .atlas-map {
+      min-height: 310px;
+    }
 
-  :global(.leaflet-popup-content a) {
-    color: var(--terracotta);
-    font-weight: 800;
-    text-decoration: none;
+    .markers text {
+      font-size: 18px;
+    }
   }
 </style>
