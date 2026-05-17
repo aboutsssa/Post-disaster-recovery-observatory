@@ -4,7 +4,36 @@ import CountyChoropleth from "../../components/CountyChoropleth.astro";
 import MiniLineChart from "../../components/MiniLineChart.astro";
 import StatusBadge from "../../components/StatusBadge.astro";
 import panel from "../../../public/data/processed/wenchuan-2008/panel_summary.json";
-import spatial from "../../../public/data/processed/wenchuan-2008/county_spatial_summary.json";
+import countyMetrics from "../../../public/data/processed/wenchuan-2008/county_metric_summary.json";
+
+const metricColumns = countyMetrics.columns;
+const gridColumns = 18;
+const cellWidth = 38;
+const cellHeight = 42;
+const gap = 4;
+const originX = 18;
+const originY = 18;
+const features = countyMetrics.rows.map((row, index) => {
+  const column = index % gridColumns;
+  const rowIndex = Math.floor(index / gridColumns);
+  const x = originX + column * (cellWidth + gap);
+  const y = originY + rowIndex * (cellHeight + gap);
+  const metrics = Object.fromEntries(metricColumns.map((key, metricIndex) => [key, row[metricIndex + 1]]));
+
+  return {
+    name: row[0],
+    city: "Sichuan county panel",
+    metrics,
+    path: `M${x} ${y} H${x + cellWidth} V${y + cellHeight} H${x} Z`
+  };
+});
+
+const spatial = {
+  ...countyMetrics,
+  source: `${countyMetrics.source} Simplified county grid rendered locally from the matched panel table.`,
+  viewBox: [0, 0, 780, 490],
+  features
+};
 
 const methodText = (key) =>
   panel.chart_meta[key].method
@@ -201,9 +230,9 @@ const moduleChartKeys = Object.fromEntries(panel.modules.map((module) => [module
       border-bottom: 1px solid var(--line);
       padding: clamp(4rem, 8vw, 7rem) 0;
       background:
-        linear-gradient(120deg, rgba(255, 255, 255, 0.92), rgba(231, 240, 238, 0.76)),
-        radial-gradient(circle at 72% 26%, rgba(195, 91, 56, 0.15), transparent 22%),
-        radial-gradient(circle at 20% 82%, rgba(17, 109, 114, 0.14), transparent 24%);
+        linear-gradient(120deg, rgba(20, 29, 26, 0.95), rgba(18, 31, 28, 0.78)),
+        radial-gradient(circle at 72% 26%, rgba(228, 134, 99, 0.15), transparent 22%),
+        radial-gradient(circle at 20% 82%, rgba(99, 195, 183, 0.14), transparent 24%);
     }
 
     .back-link {
@@ -227,7 +256,7 @@ const moduleChartKeys = Object.fromEntries(panel.modules.map((module) => [module
     .metric-unit {
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.74);
+      background: rgba(255, 255, 255, 0.06);
       padding: 0.3rem 0.65rem;
       color: var(--muted);
       font-size: 0.82rem;

@@ -66,7 +66,7 @@ const graticuleY = [-60, -30, 0, 30, 60].map((latitude) => ((90 - latitude) / 18
     overflow: hidden;
     border: 1px solid var(--line);
     border-radius: 8px;
-    background: #f6f3ec;
+    background: #111a18;
     box-shadow: var(--shadow);
   }
 
@@ -78,17 +78,17 @@ const graticuleY = [-60, -30, 0, 30, 60].map((latitude) => ((90 - latitude) / 18
   }
 
   .ocean {
-    fill: #dbe5e2;
+    fill: #101817;
   }
 
   .graticule {
-    stroke: rgba(36, 48, 47, 0.13);
+    stroke: rgba(244, 239, 228, 0.12);
     stroke-width: 0.8;
   }
 
   .land path {
-    fill: #f8f7f2;
-    stroke: rgba(92, 101, 98, 0.42);
+    fill: #22302c;
+    stroke: rgba(167, 181, 174, 0.42);
     stroke-width: 0.6;
     vector-effect: non-scaling-stroke;
   }
@@ -100,14 +100,14 @@ const graticuleY = [-60, -30, 0, 30, 60].map((latitude) => ((90 - latitude) / 18
   }
 
   .marker-halo {
-    fill: rgba(195, 91, 56, 0.14);
-    stroke: rgba(195, 91, 56, 0.22);
+    fill: rgba(228, 134, 99, 0.18);
+    stroke: rgba(228, 134, 99, 0.34);
     stroke-width: 1.2;
   }
 
   .marker {
-    fill: #c35b38;
-    stroke: #24302f;
+    fill: var(--terracotta);
+    stroke: #0f1715;
     stroke-width: 1.6;
     vector-effect: non-scaling-stroke;
   }
@@ -118,11 +118,11 @@ const graticuleY = [-60, -30, 0, 30, 60].map((latitude) => ((90 - latitude) / 18
   }
 
   .markers text {
-    fill: #24302f;
+    fill: var(--ink);
     font-size: 14px;
     font-weight: 850;
     paint-order: stroke;
-    stroke: #f8f7f2;
+    stroke: #101817;
     stroke-linejoin: round;
     stroke-width: 4px;
   }

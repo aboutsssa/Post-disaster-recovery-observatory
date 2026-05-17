@@ -30,11 +30,11 @@
   display: inline-flex;
   align-items: center;
   width: fit-content;
-  border: 1px solid #cbd8d5;
+  border: 1px solid var(--line);
   border-radius: 999px;
   padding: 0.22rem 0.58rem;
-  background: #edf5f3;
-  color: #41514e;
+  background: #20302b;
+  color: var(--muted);
   font-size: 0.76rem;
   font-weight: 850;
   text-transform: uppercase;
@@ -42,16 +42,16 @@
 
 .status-api_verified,
 .status-available {
-  border-color: rgba(43, 119, 112, 0.45);
-  background: rgba(43, 119, 112, 0.12);
-  color: #23615c;
+  border-color: rgba(99, 195, 183, 0.48);
+  background: rgba(99, 195, 183, 0.13);
+  color: #9ce0d7;
 }
 
 .status-available_context_only,
 .status-api_search_results {
-  border-color: rgba(201, 154, 60, 0.52);
-  background: rgba(201, 154, 60, 0.15);
-  color: #73551d;
+  border-color: rgba(227, 183, 91, 0.54);
+  background: rgba(227, 183, 91, 0.14);
+  color: #f0cc7a;
 }
 
 .status-manual_required,
@@ -61,9 +61,9 @@
 .status-not_available_missing_secret,
 .status-not_available_api_forbidden,
 .status-not_available_api_error {
-  border-color: rgba(184, 95, 61, 0.5);
-  background: rgba(184, 95, 61, 0.12);
-  color: #8c452e;
+  border-color: rgba(228, 134, 99, 0.52);
+  background: rgba(228, 134, 99, 0.13);
+  color: #f1a484;
 }
 
 .chart-card,
@@ -79,7 +79,7 @@
 }
 
 .line-chart line {
-  stroke: #cbd8d5;
+  stroke: var(--line);
   stroke-width: 1.2;
 }
 
@@ -119,9 +119,9 @@
   display: grid;
   min-height: 220px;
   place-items: center;
-  border: 1px dashed #cbd8d5;
+  border: 1px dashed var(--line);
   border-radius: 8px;
-  background: #edf5f3;
+  background: #17231f;
   padding: 1.25rem;
   text-align: center;
 }
@@ -161,7 +161,7 @@
   display: grid;
   gap: 0.25rem;
   border-left: 4px solid var(--gold);
-  background: #edf5f3;
+  background: #17231f;
   padding: 0.75rem 0.95rem;
 }
 
@@ -183,7 +183,7 @@
 
 .source-panel { margin-top: 1rem; }
 .source-list { display: grid; gap: 0.85rem; }
-.source-list section { display: grid; gap: 0.55rem; border: 1px solid var(--line); border-radius: 8px; background: #edf5f3; padding: 0.95rem; }
+.source-list section { display: grid; gap: 0.55rem; border: 1px solid var(--line); border-radius: 8px; background: #17231f; padding: 0.95rem; }
 .source-list section > div { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 .source-list h4,
 .source-list p { margin: 0; }
@@ -203,15 +203,15 @@
   border-bottom: 1px solid var(--line);
   padding: clamp(4rem, 8vw, 7rem) 0;
   background:
-    linear-gradient(120deg, rgba(255, 255, 255, 0.94), rgba(231, 240, 238, 0.72)),
-    radial-gradient(circle at 76% 24%, rgba(241, 184, 75, 0.16), transparent 24%);
+    linear-gradient(120deg, rgba(20, 29, 26, 0.96), rgba(18, 31, 28, 0.74)),
+    radial-gradient(circle at 76% 24%, rgba(227, 183, 91, 0.16), transparent 24%);
 }
 
 .wenchuan-hero {
   background:
-    linear-gradient(120deg, rgba(255, 255, 255, 0.92), rgba(231, 240, 238, 0.76)),
-    radial-gradient(circle at 72% 26%, rgba(195, 91, 56, 0.15), transparent 22%),
-    radial-gradient(circle at 20% 82%, rgba(17, 109, 114, 0.14), transparent 24%);
+    linear-gradient(120deg, rgba(20, 29, 26, 0.95), rgba(18, 31, 28, 0.78)),
+    radial-gradient(circle at 72% 26%, rgba(228, 134, 99, 0.15), transparent 22%),
+    radial-gradient(circle at 20% 82%, rgba(99, 195, 183, 0.14), transparent 24%);
 }
 
 .hero-meta {
@@ -225,7 +225,7 @@
 .metric-unit {
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.74);
+  background: rgba(255, 255, 255, 0.06);
   padding: 0.3rem 0.65rem;
   color: var(--muted);
   font-size: 0.82rem;
